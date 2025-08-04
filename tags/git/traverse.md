@@ -1,5 +1,6 @@
-## Traverse over Git commits:
-```
+# Traverse over Git commits
+
+```bash
 #!/bin/bash
 
 # Check if argument is provided

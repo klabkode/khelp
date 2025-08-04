@@ -1,13 +1,16 @@
-docker-compose:
+# docker-compose
 
-Usage:
-    docker-compose up -d
+## Usage
 
-Example:
+```bash
+docker-compose up -d
+```
 
-docker-compose.yaml
-----
+**Example:**
+
+```bash
 version: "3"
+
 services:
   opengrok:
     container_name: opengrok
@@ -20,4 +23,4 @@ services:
        - '~/opengrok/src/:/opengrok/src/'    # source code
        - '~/opengrok/etc/:/opengrok/etc/'    # folder contains configuration.xml
        - '~/opengrok/data/:/opengrok/data/'  # index and other things for source code
-----
+```

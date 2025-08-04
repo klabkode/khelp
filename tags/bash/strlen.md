@@ -1,11 +1,16 @@
-strlen: Find Length of String in Bash Script
+# Bash `strlen()` implemenation
 
-Method 1: Using the # operator
+Find Length of String in Bash Script.
 
-    #!usr/bin/env bash
-    str="this is a string"
-    n=${#str}
-    echo "Length of the string is : $n "
+## Method 1: Using the `#` operator
 
-Reference:
-https://www.geeksforgeeks.org/how-to-find-length-of-string-in-bash-script
+```bash
+#!usr/bin/env bash
+str="this is a string"
+n=${#str}
+echo "Length of the string is : $n "
+```
+
+### Reference
+
+<https://www.geeksforgeeks.org/how-to-find-length-of-string-in-bash-script>

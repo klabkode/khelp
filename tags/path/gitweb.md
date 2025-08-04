@@ -1,7 +1,8 @@
-# Gitweb Resources:
+# Gitweb Resources
 
-## /usr/share/gitweb
-```├── gitweb.cgi
+```bash
+# /usr/share/gitweb
+├── gitweb.cgi
 ├── index.cgi -> gitweb.cgi
 └── static
     ├── git-favicon.png
@@ -9,5 +10,8 @@
     ├── gitweb.css
     └── gitweb.js
 ```
-## /usr/lib/cgi-bin/
-`└── gitweb.cgi -> ../../share/gitweb/gitweb.cgi`
+
+```bash
+# /usr/lib/cgi-bin/
+└── gitweb.cgi -> ../../share/gitweb/gitweb.cgi
+```

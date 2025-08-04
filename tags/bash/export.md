@@ -1,9 +1,14 @@
-# Export variables in bash:
-```
-## Usage-1:
-    export USERNAME='atom'
+# Export Variables in Bash
 
-## Usage-2:
-    HOST_IP=$(hostname -I | cut -d' ' -f1)
-    export HOST_IP
+## Usage 1
+
+```bash
+export USERNAME='atom'
+```
+
+## Usage 2
+
+```bash
+HOST_IP=$(hostname -I | cut -d' ' -f1)
+export HOST_IP
 ```

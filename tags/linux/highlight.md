@@ -1,4 +1,7 @@
-# Highlight command usage:
+# Highlight Command Usage
 
-## List supported syntax types:
-    `highlight --list-scripts=langs`
+## List supported syntax types
+
+```bash
+highlight --list-scripts=langs
+```

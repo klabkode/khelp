@@ -1,3 +1,5 @@
-# List available interfaces:
+# List available interfaces
 
-$ tcpdump -D (or) tcpdump --list-interfaces
+```bash
+tcpdump -D (or) tcpdump --list-interfaces
+```

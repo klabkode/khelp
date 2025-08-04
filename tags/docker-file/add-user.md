@@ -1,6 +1,8 @@
-Docker script to add non-sudo user:
+# Docker script to add non-sudo user
 
+```Dockerfile
 # Create local user
+
 ARG USER=user
 RUN useradd -m ${USER} -s /bin/bash && \
     usermod -aG sudo ${USER} && \
@@ -8,6 +10,7 @@ RUN useradd -m ${USER} -s /bin/bash && \
     chmod 0440 /etc/sudoers.d/${USER}
 
 # Create local user and password
+
 ARG USER=user
 ARG USER_PASSWD=password
 RUN useradd -m ${USER} -s /bin/bash && \
@@ -17,9 +20,13 @@ RUN useradd -m ${USER} -s /bin/bash && \
     chmod 0440 /etc/sudoers.d/${USER}
 
 # Setup user login
+
 USER ${USER}
 WORKDIR /home/${USER}
+```
 
-See:
+## See
+
 Implications creating system accounts
+
 Understanding how uid and gid work in Docker containers

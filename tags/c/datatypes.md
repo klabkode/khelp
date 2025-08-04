@@ -1,33 +1,41 @@
-# Datatypes and it's sizes:
+# Datatypes and it's sizes
 
-## Basic Data Types:
+## Basic Data Types
+
+```bash
 char  : 1 byte
 int   : 4 bytes
 float : 4 bytes
 double: 8 bytes
+```
 
-## Modifiers:
+## Modifiers
+
+```bash
 short : 2 bytes
 long  : 4 bytes
+```
 
-## Qualifiers:
+## Qualifiers
+
 Signed and Unsigned are used with integer types.
+
 By default, int is considered as signed int.
 
-## Derived Data Types:
-  arrays:
-    Size is the number of elements multiplied by the size of one element.
-  structures:
-    Size is the sum of the sizes of its members. Padding may be added for alignment purposes.
-  unions:
-    Size is the size of the largest member.
-  enums:
-    Size is implementation-dependent but is often the same as int.
+## Derived Data Types
 
-## Pointers:
+- **Arrays**     : Size is the number of elements multiplied by the size of one element.
+- **Structures** : Size is the sum of the sizes of its members. Padding may be added for alignment purposes.
+- **Union**      : Size is the size of the largest member.
+- **Enums**      : Size is implementation-dependent but is often the same as int.
+
+## Pointers
+
 Size of a pointer is typically 4 or 8 bytes, depending on the system architecture (32-bit or 64-bit).
 
 ## Bytes Type
+
+```bash
  1  - char
 
  2  - short
@@ -64,8 +72,12 @@ Size of a pointer is typically 4 or 8 bytes, depending on the system architectur
  4096 - PIPE_BUF
  4096 - FILENAME_MAX
  8192 - BUFSIZ
+```
 
-## Pointer sizes:
+### Pointer sizes
+
+```bash
  8 - sizeof int*
  8 - sizeof char*
  8 - sizeof struct*
+```

@@ -1,33 +1,43 @@
 # Hexadecimal representation of a string from an ELF file
 
-## Using `hexdump`:
+## Using `hexdump`
 
-`hexdump -C yourfile.elf`
+```bash
+hexdump -C yourfile.elf
+```
 
-## Using `objdump`:
+## Using `objdump`
 
-## 1. Disassemble the ELF File:
+## 1. Disassemble the ELF File
 
-   `objdump -x yourfile.elf`
+```bash
+objdump -x yourfile.elf
+```
 
-## 2. Find the String:
+## 2. Find the String
 
-   To get a detailed view of a specific section, you can use:
+To get a detailed view of a specific section, you can use:
 
-     `objdump -s -j .data yourfile.elf`
+```bash
+objdump -s -j .data yourfile.elf
+```
 
-   Replace `.data` with the appropriate section name if different.
-   This command will display the contents of the `.data` section in hexadecimal and ASCII format.
+Replace `.data` with the appropriate section name if different.
 
-# Using `strings`:
+This command will display the contents of the `.data` section in hexadecimal and ASCII format.
 
-## Search for Specific Strings:
+## Using `strings`
 
-  `strings yourfile.elf | grep "__search_string__"`
+### Search for Specific Strings
 
-## Filter Results (Optional):
+```bash
+strings yourfile.elf | grep "__search_string__"
+```
+
+## Filter Results (Optional)
 
 If you're only interested in strings of a certain length:
 
-  `strings -n 16 yourfile.elf`
-
+```bash
+strings -n 16 yourfile.elf
+```

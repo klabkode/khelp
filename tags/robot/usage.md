@@ -1,3 +1,5 @@
-# Robot command line usage:
+# Robot command line usage
 
+```bash
 robot -T projectname testsuite.robot
+```

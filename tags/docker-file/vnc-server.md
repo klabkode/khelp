@@ -1,5 +1,6 @@
-Docker script to setup VNC server:
+# Docker script to setup VNC server
 
+```Dockerfile
 # Setting variables
 ARG USERNAME=username
 ARG DIRHOME=/home/$USERNAME
@@ -34,3 +35,4 @@ ENV VNC_RESOLUTION 1376x720
 USER    $USERNAME
 WORKDIR $DIRHOME
 EXPOSE  $VNC_PORT $NOVNC_PORT
+```

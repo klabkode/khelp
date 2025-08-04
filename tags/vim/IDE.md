@@ -1,25 +1,32 @@
-Setup IDE in Vim editor:
+# Setup IDE in Vim editor
 
-Prerequisites:
------------------
-1. Create required directories to put the Vim plugins and
-   they'll automatically load when you launch Vim.
+## Prerequisites
 
-   $ mkdir -p ~/.vim/pack/vendor/start
+Create required directories to put the Vim plugins and they'll automatically load when you launch Vim.
 
-Install NERDTree:
------------------
+```bash
+mkdir -p ~/.vim/pack/vendor/start
+```
+
+## Install NERDTree
+
 1. Git to clone the NERDTree repository
 
-   $ git clone --depth 1 https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
+   ```bash
+   git clone --depth 1 https://github.com/preservim/nerdtree.git ~/.vim/pack/vendor/start/nerdtree
+   ```
 
-2. Launch Vim and type ':NERDTree' to open Tree view
+2. Launch Vim and type `:NERDTree` to open Tree view
 
-3. Updated the window width in 'NERD_tree.vim' file
+3. Update the window width in `NERD_tree.vim` file
 
+   ```vim
    let g:NERDTreeWinSize = get(g:, 'NERDTreeWinSize', 20)
+   ```
 
-4. Added below snippets in '~/.vimrc'
+4. Added below snippets in `~/.vimrc`
+
+   ```vim
    "-------------------------
    " NERDTree configs
    "-------------------------
@@ -37,18 +44,24 @@ Install NERDTree:
    " Start NERDTree when Vim is started without file arguments.
    autocmd StdinReadPre * let s:std_in=1
    autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | set mouse=a | NERDTree | wincmd p | Tagbar | endif
+   ```
 
-Install Tagbar:
----------------
-1. Git to clone the NERDTree repository
+## Install Tagbar
 
-   $ git clone --depth 1 https://github.com/preservim/tagbar.git ~/.vim/pack/vendor/start/tagbar
+1. Git to clone the Tagbar repository
 
-2. Launch Vim and type ':Tagbar' to open Tagbar
+   ```bash
+   git clone --depth 1 https://github.com/preservim/tagbar.git ~/.vim/pack/vendor/start/tagbar
+   ```
 
-3. Updated the window width in 'tagbar.vim' file
+2. Launch Vim and type `:Tagbar` to open Tagbar
 
+3. Updated the window width in `tagbar.vim` file
+
+   ```vim
    > ['width', 20]
+   ```
 
-Weblinks:
-https://opensource.com/article/20/2/how-install-vim-plugins
+## Weblinks
+
+<https://opensource.com/article/20/2/how-install-vim-plugins>

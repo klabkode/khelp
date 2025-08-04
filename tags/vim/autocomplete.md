@@ -1,5 +1,6 @@
-# Vim Autocomplete Commands:
-```
+# Vim Autocomplete Commands
+
+```bash
 - Whole lines                                    |i CTRL-X CTRL-L|
 - Keywords in the current file                   |i CTRL-X CTRL-N|
 - Keywords in 'dictionary'                       |i CTRL-X CTRL-K|
@@ -14,6 +15,10 @@
 - Spelling suggestions                           |i CTRL-X s     |
 - Keywords in 'complete'                         |i CTRL-N       |
 ```
+
 This configs rely on
-```  filetype plugin on
-  set omnifunc=ccomplete#Complete```
+
+```vim
+filetype plugin on
+set omnifunc=ccomplete#Complete
+```

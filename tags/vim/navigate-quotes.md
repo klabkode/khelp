@@ -5,19 +5,24 @@ This guide explains how to move efficiently within quotes (`"` or `'`) and brack
 
 ## Quotes (`'` or `"`)
 
-### Inside a Quote:
+### Inside a Quote
+
 - **Move to the _start_ of the quote**:
+
   ```vim
   vi"     "Visual inside double quote (selects content)
   o       "Move to other end of selection
   ```
+
   Or:
+
   ```vim
   F"      "Move to previous double quote (backward)
   T"      "Move just before the previous double quote
   ```
 
 - **Move to the _end_ of the quote**:
+
   ```vim
   f"      "Move to next double quote (forward)
   t"      "Move just before next double quote
@@ -25,14 +30,17 @@ This guide explains how to move efficiently within quotes (`"` or `'`) and brack
 
 ## Brackets and Braces (`()`, `{}`, `[]`)
 
-### Jump Between Matching Pairs:
+### Jump Between Matching Pairs
+
 - `%` → Jump between matching `(` `)`, `{` `}`, `[` `]`
 
-### Move to Opening Bracket:
+### Move to Opening Bracket
+
 - `[{` → Jump to start of current block
 - `[(` → Jump to start of a parenthetical block
 
-### Move to Closing Bracket:
+### Move to Closing Bracket
+
 - `]}` → Jump to end of current block
 - `])` → Jump to end of parenthesis
 
@@ -55,7 +63,7 @@ if (a == "test") {
 ## Use Text Objects
 
 Use Vim text objects to select contents easily:
+
 - `vi"` → select **inside** double quotes
 - `va"` → select **around** double quotes (includes the quotes)
 - `vi'`, `va'`, `vi(`, `va{`, etc. also work similarly
-

@@ -1,55 +1,58 @@
-# Setup new virtual host in Apache2
+# Setup New Virtual Host in Apache2
 
-## 1. Create site file at /usr/local/test
+## 1. Create Site File at `/usr/local/test`
 
-    index.html
-
-## 2. Add site configs at /etc/apache2/sites-available/test.conf
-
-```
-    <VirtualHost *:80>
-        ServerAdmin webmaster@localhost
-        DocumentRoot /usr/local/test
-        ServerName localhost
-        Alias /test /usr/local/test
-
-        <Directory /usr/local/test>
-            Options Indexes FollowSymLinks
-            AllowOverride All
-            Require all granted
-        </Directory>
-
-        ErrorLog ${APACHE_LOG_DIR}/test_error.log
-        CustomLog ${APACHE_LOG_DIR}/test_access.log combined
-    </VirtualHost>
+```bash
+index.html
 ```
 
-## 3. Enable site test.conf
+## 2. Add Site Configs at `/etc/apache2/sites-available/test.conf`
 
-    sudo a2ensite test.conf
+```apache
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /usr/local/test
+    ServerName localhost
+    Alias /test /usr/local/test
 
-## 4. Access the new test site
+    <Directory /usr/local/test>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
 
-    http://localhost/test/
-
-
-# For new CGI site
-
+    ErrorLog ${APACHE_LOG_DIR}/test_error.log
+    CustomLog ${APACHE_LOG_DIR}/test_access.log combined
+</VirtualHost>
 ```
-    <VirtualHost *:80>
-        ServerAdmin webmaster@localhost
-        DocumentRoot /var/www/html
 
-        # Alias for your CGI application
-        ScriptAlias /test /usr/local/test
+## 3. Enable Site `test.conf`
 
-        <Directory "/usr/local/test">
-            Options +ExecCGI
-            AddHandler cgi-script .cgi .pl .py .sh
-            Require all granted
-        </Directory>
+```bash
+sudo a2ensite test.conf
+```
 
-        ErrorLog ${APACHE_LOG_DIR}/test_error.log
-        CustomLog ${APACHE_LOG_DIR}/test_access.log combined
-    </VirtualHost>
+## 4. Access the New Test Site
+
+Visit <http://localhost/test/>
+
+## For New CGI Site
+
+```apache
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+
+    # Alias for your CGI application
+    ScriptAlias /test /usr/local/test
+
+    <Directory "/usr/local/test">
+        Options +ExecCGI
+        AddHandler cgi-script .cgi .pl .py .sh
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/test_error.log
+    CustomLog ${APACHE_LOG_DIR}/test_access.log combined
+</VirtualHost>
 ```

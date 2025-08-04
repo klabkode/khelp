@@ -1,29 +1,47 @@
-# Git Remote Handling:
+# Git Remote Handling
 
-## Check Existing Remotes:
-  `git remote -v`
+## Check Existing Remotes
 
-## Add a New Remote:
-  `git remote add origin git@localhost:/home/git/reponame.git`
-  `git remote add origin git@github.com:username/reponame.git`
+```bash
+git remote -v
+```
 
-## Update Remote URLs (Optional):
-  `git remote set-url origin https://new-url.git`
+## Add a New Remote
+
+```bash
+git remote add origin git@localhost:/home/git/reponame.git
+```
+
+```bash
+git remote add origin git@github.com:username/reponame.git
+```
+
+## Update Remote URLs (Optional)
+
+```bash
+git remote set-url origin https://new-url.git
+```
 
 ## Remove Git Remote
-  `git remote remove origin`
+
+```bash
+git remote remove origin
+```
 
 ## Muliple Remotes
-```
-  $ git remote -v
-  gitlab  git@gitlab.com:username/reponame.git (push)  << Remote-1
-  origin  git@github.com:username/reponame.git (push)  << Remote-2
+
+```bash
+$ git remote -v
+  origin-1 git@gitlab.com:username/reponame.git (push)  << Remote-1
+  origin-2 git@github.com:username/reponame.git (push)  << Remote-2
 ```
 
-Push Changes to Gitlab Remote;
+**Push Changes to Gitlab Remote:**
 
-  `git push gitlab`
+```bash
+git push <origin-1>
 
 or
 
-  `git push gitlab master`
+git push <origin-2> master
+```

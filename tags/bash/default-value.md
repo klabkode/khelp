@@ -1,30 +1,49 @@
-# Assign conditional values in bash:
+# Assign Conditional Values in Bash
 
-## Usage:
-Check if PREFIX is set, if not, set it to /usr/local.
-    `PREFIX=${PREFIX:=/usr/local}`
+## Usage
+
+Check if `PREFIX` is set; if not, set it to `/usr/local`:
+
+```bash
+PREFIX=${PREFIX:=/usr/local}
+```
 
 In Bash, `:-` and `:=` are two different operators used in variable expansion and assignment.
 
-## Operator ':-':
-  **Syntax:** ${variable:-default}.
+---
 
-  - The ':-' operator is used for default value assignment.
-    It assigns a default value to a variable if the variable is unset or null.
-  - If variable is unset or null, it will be assigned the value of default.
+## Operator `:-`
 
-  **Example:**
-    `echo ${FOO:-default_value} #If FOO is unset or null, set it to "default_value"`
+**Syntax:** `${variable:-default}`
 
-## Operator ':=':
-   **Syntax:** ${variable:=value}.
+- The `:-` operator is used for default value assignment.
+- It substitutes the default value if the variable is unset or null, but does **not** assign it.
+- The variable itself remains unchanged unless used with assignment.
 
-    - The := operator is used for assigning a value to a variable only if the variable is unset (not if it's null).
-    - If variable is unset, it will be assigned the value of value.
+**Example:**
 
-  **Example:**
-    `echo ${BAR:=new_value} # If BAR is unset, set it to "new_value"`
+```bash
+echo ${FOO:-default_value} # If FOO is unset or null, prints "default_value"
+```
 
-## In summary:
-  - `${variable:-default}` assigns a default value if the variable is unset or null.
-  - `${variable:=value}` assigns a value only if the variable is unset.
+---
+
+## Operator `:=`
+
+**Syntax:** `${variable:=value}`
+
+- The `:=` operator assigns a value to a variable only if the variable is unset or null.
+- If the variable is unset or null, it will be assigned the value.
+
+**Example:**
+
+```bash
+echo ${BAR:=new_value} # If BAR is unset or null, sets BAR to "new_value" and prints it
+```
+
+---
+
+## In Summary
+
+- `${variable:-default}` substitutes a default value if the variable is unset or null (does not assign).
+- `${variable:=value}` assigns a value if the variable is unset or null.

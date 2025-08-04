@@ -1,7 +1,9 @@
-# Time command implementaion:
+# Time command implementaion
 
-## Method 1:
-```#!/bin/sh
+## Method 1
+
+```bash
+#!/bin/sh
 
 # Start time in seconds
 start=$(date +%s)
@@ -34,4 +36,5 @@ end=$(date +%s.%N)
 ELAPSED=$(echo "$end" "$start" | awk '{printf "%.6f", $1 - $2}')
 
 # Print the elapsed time
-echo "Elapsed time: $ELAPSED seconds"```
+echo "Elapsed time: $ELAPSED seconds"
+```

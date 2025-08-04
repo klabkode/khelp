@@ -7,13 +7,14 @@ This mismatch causes `^M` characters to appear in files when opened or processed
 ## What is `^M`?
 
 `^M` represents the carriage return character (`\r`, ASCII 13). It appears when:
+
 - A file was created/edited in Windows (e.g., Notepad, VSCode with CRLF)
 - You open it in Unix/Linux terminal tools or editors
 
 ## How to Detect `^M` Lines
 
 ```bash
-cat -v filename      # Shows ^M as literal
+cat -v filename     # Shows ^M as literal
 grep -P '\r' file   # Detects \r characters
 ```
 
@@ -61,13 +62,13 @@ find . -type f -exec dos2unix {} +
 
 ## Git Settings to Avoid CRLF Issues
 
-### Convert to LF on commit:
+### Convert to LF on commit
 
 ```bash
 git config --global core.autocrlf input
 ```
 
-### Force LF in repo with `.gitattributes`:
+### Force LF in repo with `.gitattributes`
 
 ```text
 *.sh text eol=lf
@@ -91,5 +92,3 @@ git config --global core.autocrlf input
 | Unix    | LF          | `\n`       |
 
 **Always prefer `LF` for scripts and code in Unix/Linux.**
-
----

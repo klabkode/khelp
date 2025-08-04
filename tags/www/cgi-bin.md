@@ -1,105 +1,209 @@
-# Setup HTTP CGI environment in Ubuntu 20:
+# Setup HTTP CGI Environment in Ubuntu 20
 
-1. Install Apache webserver
-   `$ sudo apt install apache2`
+This guide walks you through setting up a CGI environment with Apache2 on Ubuntu 20.
 
-2. Enable CGI module and restart the webserver
-   `$ sudo a2enmod cgi`
-   `$ sudo service apache2 restart (or) systemctl restart apache2`
+## Prerequisites
 
-3. By default, apache2 server run CGI scripts in the path `/usr/lib/cgi-bin/` (or) `/var/www/cgi-bin`
-   Refer the config file `'/etc/apache2/conf-available/serve-cgi-bin.conf'`:
-     ```<IfModule mod_alias.c>
-         <IfModule mod_cgi.c>
-             Define ENABLE_USR_LIB_CGI_BIN
-         </IfModule>
+### 1. Install Apache webserver
 
-         <IfModule mod_cgid.c>
-             Define ENABLE_USR_LIB_CGI_BIN
-         </IfModule>
+   ```bash
+   sudo apt install apache2
+   ```
 
-         <IfDefine ENABLE_USR_LIB_CGI_BIN>
-             ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
-             <Directory "/usr/lib/cgi-bin">
-                 AllowOverride None
-                 Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
-                 Require all granted
-             </Directory>
-         </IfDefine>
-     </IfModule>```
+### 2. Enable CGI module and restart the webserver
 
-## Helloworld in CGI programming:
-1. Paste the below snippet to hello.cgi file at `'/usr/lib/cgi-bin'`.
-     **hello.cgi:**
-     ```#!/bin/bash
-     echo "Content-type: text/html"
-     echo ""
-     echo "<html>"
-     echo "<head>"
-     echo "<title>Hello, World! CGI</title>"
-     echo "</head>"
-     echo "<body>"
-     echo "<h1>Hello, World!</h1>"
-     echo "<h1>Running CGI script in '$PWD'.</h1>"
-     echo "</body>"
-     echo "</html>"```
+   ```bash
+   sudo a2enmod cgi
+   sudo service apache2 restart
+   # OR
+   sudo systemctl restart apache2
+   ```
 
-2. Access the site via `'http://localhost/cgi-bin/hello.cgi'`.
+### 3. Default CGI Configuration
 
-## Customizing the `'cgi-bin'` path:
-1. Create your own directory that act as `'cgi-bin'` root.
-   `$ mkdir /usr/lib/kdev`
+By default, Apache2 runs CGI scripts in `/usr/lib/cgi-bin/` or `/var/www/cgi-bin/`.
 
-2. Put your CGI files at `'/usr/lib/kdev'`.
+The configuration is defined in `/etc/apache2/conf-available/serve-cgi-bin.conf`:
 
-3. Added your CGI configs to `'apache2.conf'` file.
-     **kdev.cgi:**
-     ```ScriptAlias /kdev/ "/usr/lib/kdev/hello.cgi/"
-     RedirectMatch ^/kdev$ /kdev/
-     #Alias /kdev-css "/usr/share/kdev/"
-     <Directory "/usr/lib/kdev/">
-         AllowOverride None
-         Options ExecCGI FollowSymlinks
-         Require all granted
-     </Directory>```
+```apache
+<IfModule mod_alias.c>
+    <IfModule mod_cgi.c>
+        Define ENABLE_USR_LIB_CGI_BIN
+    </IfModule>
 
-   **Follow the below steps for seperate config file:**
-   1. Place the config file at `'/etc/apache2/conf-available'` directory.
-   1. Create a soft link to enable the config.
-        ```$ cd /etc/apache2/conf-enabled
-        $ ln -sf ../conf-available/kdev.conf ./kdev.conf```
+    <IfModule mod_cgid.c>
+        Define ENABLE_USR_LIB_CGI_BIN
+    </IfModule>
 
-4. Optionally verify Configuration Changes.
-   `$ apachectl configtest`
+    <IfDefine ENABLE_USR_LIB_CGI_BIN>
+        ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+        <Directory "/usr/lib/cgi-bin">
+            AllowOverride None
+            Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+            Require all granted
+        </Directory>
+    </IfDefine>
+</IfModule>
+```
 
-5. Optionally review the Apache module status.
-   `$ apachectl -M`
+## Hello World CGI Example
 
-6. Restart the apache2 server.
-   `$ sudo systemctl restart apache2`
+1. Create a `hello.cgi` file in `/usr/lib/cgi-bin/`:
 
-## Let's break down the configuration:
-1. `ScriptAlias /kdev/ "/usr/lib/kdev/kdev.cgi/"`:
-   This line establishes a mapping between the URL path `"/kdev/"` and the physical location of the Kdev CGI script (`"/usr/lib/kdev/kdev.cgi/"`).
-   It means that when you access URLs starting with `"/kdev/"`, the server will execute the Kdev CGI script.
+   **File: `hello.cgi`**
 
-2. `RedirectMatch ^/kdev$ /kdev/`:
-   This line is a redirection rule that ensures that if someone accesses `"/kdev"` (without a trailing slash),
-   they will be redirected to "/kdev/" (with a trailing slash). This helps maintain consistency in URL handling.
+   ```bash
+   #!/bin/bash
+   echo "Content-type: text/html"
+   echo ""
+   echo "<html>"
+   echo "<head>"
+   echo "<title>Hello, World! CGI</title>"
+   echo "</head>"
+   echo "<body>"
+   echo "<h1>Hello, World!</h1>"
+   echo "<h1>Running CGI script in '$PWD'.</h1>"
+   echo "</body>"
+   echo "</html>"
+   ```
 
-3. `Alias /kdev-css "/usr/share/kdev/"`:
-   This line creates an alias for the `"/kdev-css"` URL path, mapping it to the physical directory `"/usr/share/kdev/"`.
-   This is often used to serve static CSS files or other assets.
+2. Make the script executable
 
-4. `<Directory "/usr/lib/kdev/">`:
-   This block of directives applies specifically to the directory `"/usr/lib/kdev/"`.
-     a. `AllowOverride None`             : Disables the use of .htaccess files for overrides in this directory.
-     b. `Options ExecCGI FollowSymlinks` : Configures the options for this directory. It allows the execution of CGI scripts and following of symbolic links.
-     c. `Require all granted`            : Specifies that access to this directory is granted to all users.
+   ```bash
+   sudo chmod +x /usr/lib/cgi-bin/hello.cgi
+   ```
 
-In summary, this configuration sets up the Kdev CGI script to be executed when accessing URLs under `"/kdev/"` and
-establishes some additional rules for URL handling and serving static assets. It also defines the permissions and
-options for the `"/usr/lib/kdev/"` directory. The actual Kdev web interface should be accessible at a URL like:
+3. **Access the script**
 
-  http://localhost/kdev/
+   Open your browser and navigate to: `http://localhost/cgi-bin/hello.cgi`
 
+## Customizing the CGI Path
+
+1. Create your custom CGI directory `mkdir /usr/lib/kdev`.
+
+2. Place your CGI files in the new directory `/usr/lib/kdev/`.
+
+3. Add the following configuration to `/etc/apache2/apache2.conf`:
+
+   **File: `kdev.cgi`**
+
+   ```apache
+   ScriptAlias /kdev/ "/usr/lib/kdev/"
+   RedirectMatch ^/kdev$ /kdev/
+
+   # Optional: Serve static assets
+   #Alias /kdev-css "/usr/share/kdev/"
+
+   <Directory "/usr/lib/kdev/">
+      AllowOverride None
+      Options ExecCGI FollowSymlinks
+      Require all granted
+   </Directory>
+   ```
+
+- Optionally: Create a Separate Configuration File
+
+   1. **Create the configuration file**
+
+      Create `/etc/apache2/conf-available/kdev.conf` with the above configuration.
+
+   2. **Enable the configuration**
+
+      ```bash
+      cd /etc/apache2/conf-enabled
+      sudo ln -sf ../conf-available/kdev.conf ./kdev.conf
+      ```
+
+## Deployment
+
+1. Verify configuration syntax
+
+   ```bash
+   sudo apachectl configtest
+   ```
+
+2. Review Apache module status (optional)
+
+   ```bash
+   apachectl -M
+   ```
+
+3. Restart Apache2
+
+   ```bash
+   sudo systemctl restart apache2
+   ```
+
+## Configuration Breakdown
+
+### 1. ScriptAlias Directive
+
+```apache
+ScriptAlias /kdev/ "/usr/lib/kdev/"
+```
+
+- Maps the URL path `/kdev/` to the physical location `/usr/lib/kdev/`
+- When accessing URLs starting with `/kdev/`, the server executes scripts from this directory
+
+### 2. Redirect Rule
+
+```apache
+RedirectMatch ^/kdev$ /kdev/
+```
+
+- Redirects `/kdev` (without trailing slash) to `/kdev/` (with trailing slash)
+- Ensures consistent URL handling
+
+### 3. Static Asset Alias
+
+```apache
+Alias /kdev-css "/usr/share/kdev/"
+```
+
+- Creates an alias for serving static files (CSS, images, etc.)
+- Maps `/kdev-css` URL path to `/usr/share/kdev/` directory
+
+### 4. Directory Configuration
+
+```apache
+<Directory "/usr/lib/kdev/">
+    AllowOverride None
+    Options ExecCGI FollowSymlinks
+    Require all granted
+</Directory>
+```
+
+**Directive explanations:**
+
+- `AllowOverride None`: Disables `.htaccess` file overrides in this directory
+- `Options ExecCGI FollowSymlinks`: Allows CGI script execution and following symbolic links
+- `Require all granted`: Grants access to all users
+
+## Accessing Your CGI Application
+
+After completing the setup, your CGI application will be accessible at:
+
+<http://localhost/kdev/>
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Permission denied errors**
+
+   ```bash
+   sudo chmod +x /usr/lib/kdev/your-script.cgi
+   sudo chown www-data:www-data /usr/lib/kdev/your-script.cgi
+   ```
+
+2. **Check Apache error logs**
+
+   ```bash
+   sudo tail -f /var/log/apache2/error.log
+   ```
+
+3. **Verify CGI module is loaded**
+
+   ```bash
+   apache2ctl -M | grep cgi
+   ```

@@ -1,11 +1,23 @@
-# Scan available hosts in the network:
+# Scan available hosts in the network
 
-## Use 'nmap' to scan the network for connected hosts:
-    `nmap -sn 192.168.1.1-254`
+## Use `nmap` to scan the network for connected hosts
 
-## Identify Open Ports:
-    `nmap 192.168.1.10` (or)
-    `nmap -p- 192.168.1.10`
+```bash
+nmap -sn 192.168.1.1-254
+```
 
-## Deep Scan:
-    `nmap -vvv -p- -A localhost`
+## Identify Open Ports
+
+```bash
+nmap 192.168.1.10
+
+(or)
+
+nmap -p- 192.168.1.10
+```
+
+## Deep Scan
+
+```bash
+nmap -vvv -p- -A localhost
+```

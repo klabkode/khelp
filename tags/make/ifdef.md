@@ -1,5 +1,6 @@
-# ifdef in Makefile:
-```
+# ifdef in Makefile
+
+```make
 TARGET_FILE := your_target_file.txt
 
 all: check_file
@@ -24,4 +25,5 @@ create_file:
     @echo "Creating $(TARGET_FILE)..."
     @echo "Hello, World!" > $(TARGET_FILE)
 
-.PHONY: all check_file run_target create_file```
+.PHONY: all check_file run_target create_file
+```

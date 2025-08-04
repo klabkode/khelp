@@ -1,19 +1,28 @@
-# Manage Interactive Login:
+# Manage Interactive Login
 
-## Return if non interactive:
-### Method 1:
+## Return if Non-Interactive
+
+### Method 1
+
 **/etc/bash.bashrc:**
-  ```[ -z "$PS1" ] && return
 
-    (or)
+```bash
+[ -z "$PS1" ] && return
 
-  if [ -z "$PS1" ]; then
+# or
+
+if [ -z "$PS1" ]; then
     return
-  fi```
+fi
+```
 
-### Method 2:
+### Method 2
+
 **~/.bashrc:**
-  ```case $- in
-      *i*) ;;
-        *) return;;
-  esac```
+
+```bash
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+```

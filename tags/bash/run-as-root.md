@@ -1,5 +1,6 @@
-# Check whether the script is being run by the root user:
-```
+# Check whether the script is being run by the root user
+
+```bash
 #!/bin/bash
 
 # Check if the script is run as root

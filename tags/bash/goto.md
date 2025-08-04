@@ -1,5 +1,6 @@
-## Simulate Goto in Bash
-```
+# Simulate Goto in Bash
+
+```bash
 #!/bin/bash
 
 # Function to simulate "goto" behavior

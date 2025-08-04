@@ -1,18 +1,34 @@
-# Sudoer Mangement:
+# Sudoer Mangement
 
-## Add a user to the @sudo group:
-  `usermod -aG sudo <user-name>`
+## Add a user to the @sudo group
 
-## Allow user to run all sudoer commands:
-  `echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers` (or)
-  `echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER}`
+```bash
+usermod -aG sudo <user-name>
+```
 
-## Allow user to run specific sudoer commands:
-  `${USER} ALL=(ALL) NOPASSWD: /sbin/reboot`
+## Allow user to run all sudoer commands
 
-## Note:
+```bash
+echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers`
+
+(or)
+
+echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER}
+```
+
+## Allow user to run specific sudoer commands
+
+```bash
+${USER} ALL=(ALL) NOPASSWD: /sbin/reboot
+```
+
+## Note
+
 Remember, always use `sudo visudo` or `sudo visudo -f /path/to/file` to edit
 sudo configuration files to ensure proper syntax checking.
 
-## Verify running configuration:
-  `sudo -l`
+## Verify running configuration
+
+```bash
+sudo -l
+```

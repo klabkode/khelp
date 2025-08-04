@@ -1,5 +1,6 @@
-# Comments in Bash:
-```
+# Comments in Bash
+
+```bash
 #!/bin/bash
 
 : <<'COMMENT'
@@ -10,3 +11,8 @@ COMMENT
 
 echo "This is not a comment."
 ```
+
+## Explanation
+
+- Use `#` for single-line comments.
+- The `: <<'COMMENT' ... COMMENT` syntax creates a multi-line comment block (using a here-document ignored by the shell).

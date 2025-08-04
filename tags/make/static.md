@@ -1,11 +1,15 @@
-# Static flag usage:
+# Static Flag Usage
 
 The `-static` option is typically used during linking to create a statically linked executable.
+
 Therefore, it should be included in the `LDFLAGS` (Linker Flags) variable in the Makefile.
+
 It is not needed in `CFLAGS` (Compiler Flags) because it is not a compiler option.
 
-## Makefile:
-```CC      =  gcc
+## Makefile
+
+```make
+CC      =  gcc
 CFLAGS  = -Wall
 LDFLAGS = -static
 

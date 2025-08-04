@@ -1,6 +1,10 @@
-## Access your @home directory directly without creating a symbolic link:
+# Access your @home directory directly without creating a symbolic link
+
 Add following Apache configurations in '`/etc/apache2/sites-available/000-default.conf`' file.
-```
+
+## Configuration
+
+```apache
 <VirtualHost *:80>
     # Other configurations...
 
@@ -12,10 +16,15 @@ Add following Apache configurations in '`/etc/apache2/sites-available/000-defaul
     </Directory>
 
     # Other configurations...
-</VirtualHost>```
+</VirtualHost>
+```
 
-## Restart Apache:
-`sudo service apache2 restart`
+## Restart Apache
 
-## Note:
-In the test, the webserver blocked accessing the user @home directory.
+```bash
+sudo service apache2 restart
+```
+
+## Notes
+
+> In the test, the webserver blocked accessing the user @home directory.

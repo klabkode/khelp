@@ -1,16 +1,31 @@
-# NMcli usage:
+# NMcli Usage
 
-## List available Wi-Fi networks:
-`nmcli device wifi list`
+## List available Wi-Fi networks
 
-## Connect to a Wi-Fi network:
-`nmcli device wifi connect <wifi-ssid> password <wifi-password>`
+```bash
+nmcli device wifi list
+```
 
-## Wifi network status:
-`nmcli connection show`
+## Connect to a Wi-Fi network
 
-## Wi-Fi Adapter Status:
-`nmcli device`
+```bash
+nmcli device wifi connect <wifi-ssid> password <wifi-password>
+```
 
-## Reconfigure Wi-Fi Connection:
-`nmcli connection delete <wifi-ssid>`
+## Wifi network status
+
+```bash
+nmcli connection show
+```
+
+## Wi-Fi Adapter Status
+
+```bash
+nmcli device
+```
+
+## Reconfigure Wi-Fi Connection
+
+```bash
+nmcli connection delete <wifi-ssid>
+```

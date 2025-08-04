@@ -1,76 +1,111 @@
-# Python package manager:
+# Python package manager
 
-pip is the reference Python package manager. It’s used to install and update packages into a virtual environment.
+`pip` is the reference Python package manager. It’s used to install and update packages into a virtual environment.
 
 The Python installers for Windows and MacOS include pip.
-```
+
+```bash
 python -m pip install --upgrade pip  # Unix
 python -m pip --version              # Windows
 ```
-## Install packages using pip:
-```python -m pip install <package-name>  # Unix
-py -m pip install <package-name>      # Windows```
 
-## Note: Replace 'python' to 'py' for Windows.
+## Install packages using pip
+
+```bash
+python -m pip install <package-name>  # Unix
+py -m pip install <package-name>      # Windows
+```
+
+**Note:** Replace `python` to `py` for Windows.
 
 The most common scenario is to install from PyPI using Requirement Specifiers:
-```
+
+```bash
 python -m pip install  SomePackage          # Latest version
 python -m pip install  SomePackage==1.0.4   # Specific version
 python -m pip install 'SomePackage>=1.0.4'  # Minimum version
 ```
 
-### Force install:
-```
+### Force install
+
+```bash
 python3 -m pip install --force-reinstall Pillow
 ```
 
-## Upgrading packages:
+## Upgrading packages
+
 `python -m pip install --upgrade <package-name>`
 
-## List installed packages:
-`pip(3) list`
+## List installed packages
+
+```bash
+pip(3) list
+```
 
 If you want to see more details about the installed packages:
-`pip(3) show <package-name>`
-`pip(3) show --files <package-name>`
 
-## Installing from Wheels:
+```bash
+pip(3) show <package-name>
+pip(3) show --files <package-name>
+```
+
+## Installing from Wheels
+
 `Wheel` is a built, archive format that can greatly speed installation compared to building and installing from source archives.
+
 Pip prefers Wheels where they are available. To disable this, use the `--no-binary` flag for pip install.
+
 If no satisfactory wheels are found, pip will default to finding source archives.
 
 To install directly from a wheel archive:
-`python -m pip install SomePackage-1.0-py2.py3-none-any.whl`
+
+```bash
+python -m pip install SomePackage-1.0-py2.py3-none-any.whl
+```
 
 For the cases where wheels are not available, pip offers pip wheel as a convenience, to build wheels for all your requirements and dependencies.
+
 Pip wheel requires the wheel package to be installed, which provides the `bdist_wheel` setuptools extension that it uses.
+
 To build wheels for your requirements and all their dependencies to a local directory:
-```
+
+```bash
 python -m pip install wheel
 python -m pip wheel --wheel-dir=/local/wheels -r requirements.txt
 ```
+
 And then to install those requirements just using your local directory of wheels (and not from PyPI):
-```
+
+```bash
 python -m pip install --no-index --find-links=/local/wheels -r requirements.txt
 ```
-## Install packages using a requirements file:
-Instead of installing packages individually, pip allows you to declare all dependencies
-in a Requirements File. For example you could create a requirements.txt file containing:
 
-requirements.txt:```
+## Install packages using a requirements file
+
+Instead of installing packages individually, pip allows you to declare all dependencies
+
+in a Requirements File. For example you could create a `requirements.txt` file containing:
+
+**requirements.txt:**
+
+```bash
 requests==2.18.4
 google-auth==1.1.0
 
 python -m pip install -r requirements.txt
 ```
-## Freezing dependencies:
+
+## Freezing dependencies
+
 Pip can export a list of all installed packages and their versions using the freeze command:
-```
+
+```bash
 python -m pip freeze
 ```
+
 Which will output a list of package specifiers such as:
-```
+
+```bash
 cachetools==2.0.1
 certifi==2017.7.27.1
 chardet==3.0.4
@@ -83,32 +118,50 @@ rsa==3.4.2
 six==1.11.0
 urllib3==1.22
 ```
-The pip freeze command is useful for creating Requirements Files that can re-create
-the exact versions of all packages installed in an environment.
 
-## Create Requirements Files:
+The pip freeze command is useful for creating Requirements Files that can re-create the exact versions of all packages installed in an environment.
+
+## Create Requirements Files
+
 `Requirements files` are files containing a list of items to be installed using pip install like so:
-```
+
+```bash
 python -m pip install -r requirements.txt
 ```
-### Use cases:
+
+### Use cases
+
 1. Requirements files are used to hold the result from pip freeze for the purpose of achieving Repeatable Installs.
-```   python -m pip freeze > requirements.txt
-   python -m pip install -r requirements.txt```
+
+   ```bash
+   python -m pip freeze > requirements.txt
+   python -m pip install -r requirements.txt
+   ```
 
 2. Requirements files are used to force pip to properly resolve dependencies
 3. Requirements files are used to force pip to install an alternate version of a sub-dependency.
 4. Requirements files are used to override a dependency with a local patch that lives in version control.
 
-## Listing Packages:
-`python -m pip list`
+## Listing Packages
 
-## Searching for Packages:
-`python -m pip search "query"`
+```bash
+python -m pip list
+```
 
-## Command Completion:
+## Searching for Packages
+
+```bash
+python -m pip search "query"
+```
+
+## Command Completion
+
 To setup for bash:
-`python -m pip completion --bash >> ~/.profile`
 
-## Weblinks:
-https://pip.pypa.io/en/latest/user_guide/#requirements-files
+```bash
+python -m pip completion --bash >> ~/.profile
+```
+
+## Weblinks
+
+<https://pip.pypa.io/en/latest/user_guide/#requirements-files>

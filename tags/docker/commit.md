@@ -1,7 +1,15 @@
-# Committing running container changes to new Docker Image
+# Docker Commit
 
-  Synopsis:
-    docker commit <container-id> <new-image-name>
+Committing running container changes to new Docker Image.
 
-  Example:
-    docker commit deddd39fa163 ubuntu-new-image
+## Synopsis
+
+```bash
+docker commit <container-id> <new-image-name>
+```
+
+**Example:**
+
+```bash
+docker commit deddd39fa163 ubuntu-new-image
+```

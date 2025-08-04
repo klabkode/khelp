@@ -1,28 +1,49 @@
-Setting bare window manager in Ubuntu:20
+# Setting Up a Bare Window Manager in Ubuntu 20
 
-Platform: Docker VNC server
+**Platform:** Docker VNC server
 
-Steps:
-1. Install ubuntu server
+## Steps
+
+1. Install Ubuntu server
+
+   ```bash
    docker pull ubuntu:focal
+   ```
 
 2. Install Xorg
+
+   ```bash
    apt install xorg
+   ```
 
 3. Install X11 window managers
-   apt install metacity/blackbox/openbox/twm/i3
+
+   ```bash
+   apt install metacity blackbox openbox twm i3
+   ```
 
 4. Install VNC server and add the below line to start WM on VNC startup
+
+   ```bash
    /etc/X11/Xsession blackbox
+   ```
 
-Notes:
-We can able to run the GUI apps without window managers directly with Xorg.
+## Notes
 
-Install any GUI program and start it with Xsession
-  1. Install Xterm
-     apt install xterm
+You can run GUI apps without window managers directly with Xorg.
 
-  2. Update the VNC startup with
-     /etc/X11/Xsession xterm
+Install any GUI program and start it with Xsession:
 
-  3. Now xterm will run on VNC startup
+1. Install Xterm
+
+   ```bash
+   apt install xterm
+   ```
+
+2. Update the VNC startup with
+
+   ```bash
+   /etc/X11/Xsession xterm
+   ```
+
+3. Now xterm will run on VNC startup

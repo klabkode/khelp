@@ -1,18 +1,37 @@
-# Find command usage:
+# Find Command Usage
 
-## List files
-  `find` (or) `find .`
+## List Files
 
-## List files with realpath:
-  `find $PWD` (or) `find $(realpath .)`
+```bash
+find
+# or
+find .
+```
 
-## Find files with type:
-  `find -type f`      # Find regular files
-  `find -type d`      # Find directories
-  `find -executable`  # Find executables and directories
+## List Files with Realpath
 
-## Find files and sort it:
-  `find . -name *.h -exec dirname {} \; | sort > sorted.txt`
+```bash
+find "$PWD"
+# or
+find "$(realpath .)"
+```
 
-## Find files and run 'bashcov' command for each file
-  `find /path/to/your/project -type f -name "*.sh" -exec bashcov {} \;`
+## Find Files by Type
+
+```bash
+find -type f        # Find regular files
+find -type d        # Find directories
+find -executable    # Find executables and directories
+```
+
+## Find Files and Sort Results
+
+```bash
+find . -name "*.h" -exec dirname {} \; | sort > sorted.txt
+```
+
+## Find Files and Run 'bashcov' Command for Each File
+
+```bash
+find /path/to/your/project -type f -name "*.sh" -exec bashcov {} \;
+```

@@ -1,5 +1,13 @@
-## Kill the process with the specified PID
-  `kill -TERM $PID`
+# Kill Processes in Bash
 
-## Kill all child processes of the specified parent PID
-  `pkill -TERM -P $PPID`
+## Kill the Process with the Specified PID
+
+```bash
+kill -TERM $PID
+```
+
+## Kill All Child Processes of the Specified Parent PID
+
+```bash
+pkill -TERM -P $PPID
+```

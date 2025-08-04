@@ -1,5 +1,6 @@
-## strstr() implemenation in Bash
-```
+# Bash `strstr()` implemenation
+
+```bash
 string="Hello World"
 substring="lo"
 

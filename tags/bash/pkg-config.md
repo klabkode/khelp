@@ -1,37 +1,60 @@
-# Package Config:
+# pkg-config Usage
 
-## List all available packages registered with pkg-config:
-  `pkg-config --list-all`
+## List All Available Packages
 
-## Retrive pkg-config information of a library:
-  `pkg-config --cflags --libs <package-name>`
+```bash
+pkg-config --list-all
+```
 
-## Retrive static pkg-config information of a library:
-  `pkg-config --static --libs <package-name>`
+## Retrieve pkg-config Information for a Library
 
-# Work samples with Curl package:
+```bash
+pkg-config --cflags --libs <package-name>
+```
 
-## Print CFLAGS:
-  `pkg-config --cflags libcurl`
-  Output:
-  `-I/usr/include/x86_64-linux-gnu`
+## Retrieve Static pkg-config Information for a Library
 
-## Print CFLAGS and LDFLAGS:
-  `pkg-config --cflags --libs libcurl`
-  Output:
-  `-I/usr/include/x86_64-linux-gnu -lcurl`
+```bash
+pkg-config --static --libs <package-name>
+```
 
-## Print CFLAGS and LDFLAGS for Static linking:
-  `pkg-config --cflags --libs --static libcurl`
-  Output:
-  `-I/usr/include/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu/mit-krb5 -lcurl -lnghttp2 -lidn2 -lrtmp -lssh -lpsl -lssl -lcrypto -lssl -lcrypto -Wl,-Bsymbolic-functions -Wl,-z,relro -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -llber -lldap -llber -lbrotlidec -lz`
+## Work Samples with Curl Package
 
-## PKG_CONFIG_PATH:
-Set the PKG_CONFIG_PATH environment variable to include the directory where the .pc files for the library are located.
+## Print CFLAGS
 
-`export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/path/to/libexample/pkgconfig`
+```bash
+pkg-config --cflags libcurl
+# Output:
+# -I/usr/include/x86_64-linux-gnu
+```
 
-## How to use in Makefile:
-```  CFLAGS  += $(shell pkg-config --cflags libexample)
-  LDFLAGS += $(shell pkg-config --libs   libexample)
+## Print CFLAGS and LDFLAGS
+
+```bash
+pkg-config --cflags --libs libcurl
+# Output:
+# -I/usr/include/x86_64-linux-gnu -lcurl
+```
+
+## Print CFLAGS and LDFLAGS for Static Linking
+
+```bash
+pkg-config --cflags --libs --static libcurl
+# Output:
+# -I/usr/include/x86_64-linux-gnu -L/usr/lib/x86_64-linux-gnu/mit-krb5 -lcurl -lnghttp2 -lidn2 -lrtmp -lssh -lpsl -lssl -lcrypto -lssl -lcrypto -Wl,-Bsymbolic-functions -Wl,-z,relro -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -llber -lldap -llber -lbrotlidec -lz
+```
+
+## PKG_CONFIG_PATH
+
+Set the `PKG_CONFIG_PATH` environment variable to include the directory where the `.pc` files for the library are located.
+
+```bash
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/path/to/libexample/pkgconfig
+```
+
+## How to Use in Makefile
+
+```makefile
+CFLAGS  += $(shell pkg-config --cflags libexample)
+LDFLAGS += $(shell pkg-config --libs   libexample)
 ```

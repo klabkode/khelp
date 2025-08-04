@@ -1,7 +1,8 @@
-# Getopt usage:
+# Getopt Usage
 
-## Parsing short options:
-```
+## Parsing Short Options
+
+```bash
 list() {
   local OPTIND opt
 
@@ -27,8 +28,9 @@ list() {
 }
 ```
 
-## Parsing long options:
-```
+## Parsing Long Options
+
+```bash
 list() {
   local OPTIND opt file
 

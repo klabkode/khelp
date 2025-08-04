@@ -1,13 +1,20 @@
-# Explore ELF symbols
+# Explore ELF Symbols
 
-## With 'readelf' command:
+## Using `readelf`
 
-    `readelf -s <executable> | grep 'my_fun'`
+```bash
+readelf -s <your-elf-file>
+readelf -s <your-executable> | grep 'my_fun'
+```
 
-## With 'nm' command:
+## Using `nm`
 
-    `nm <executable> | grep 'my_fun'`
+```bash
+nm <your-executable> | grep 'my_fun'
+```
 
-## With 'objdump' command:
+## Using `objdump`
 
-    `objdump -t <executable> | grep 'my_fun'`
+```bash
+objdump -t <your-executable> | grep 'my_fun'
+```

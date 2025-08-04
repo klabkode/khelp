@@ -1,6 +1,14 @@
-## PID of the current process:
-  `PID=$$`
+# Working with Process IDs (PID) in Bash
 
-## PID of the last background command (child)
-  ```command &
-  CHILD_PID=$!```
+## PID of the Current Process
+
+```bash
+PID=$$
+```
+
+## PID of the Last Background Command (Child)
+
+```bash
+command &
+CHILD_PID=$!
+```

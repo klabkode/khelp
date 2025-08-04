@@ -1,15 +1,19 @@
-# Bash script to run and handle the command exit status
+# Bash Script to Run and Handle the Command Exit Status
 
-## Method-1: Execute command and check the exit status directly:
-```  if <command-line>; then
+## Method 1: Execute Command and Check the Exit Status Directly
+
+```bash
+if <command-line>; then
     echo "Command succeeded"
-  else
+else
     echo "Command failed"
-  fi
+fi
 ```
 
-## Method-2: Checking failure case:
-```  if ! <command-line>; then
+## Method 2: Checking Failure Case
+
+```bash
+if ! <command-line>; then
     echo "Command failed"
-  fi
+fi
 ```

@@ -1,5 +1,6 @@
-# Switch case in Bash:
-```
+# Switch case in Bash
+
+```bash
 #!/bin/bash
 
 check_string() {

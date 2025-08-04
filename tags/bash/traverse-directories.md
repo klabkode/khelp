@@ -1,5 +1,6 @@
-Bash script to recursively traverse the current directory:
+# Bash script to recursively traverse the current directory
 
+```bash
 #!/bin/bash
 
 traverse_recursively() {
@@ -19,3 +20,4 @@ traverse_recursively() {
 traverse_recursively "$PWD"
 
 exit $?
+```

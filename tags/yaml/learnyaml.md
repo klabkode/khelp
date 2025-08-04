@@ -1,9 +1,10 @@
-YAML manual:
+# YAML manual
 
 YAML is a data serialisation language designed to be directly writable and readable by humans.
 
----  # document start
+## Documentation
 
+```yaml
 # Comments in YAML look like this.
 # YAML support single-line comments.
 
@@ -214,8 +215,8 @@ set2:
   item1: null
   item2: null
   item3: null
+```
 
-...  # document end
+## Weblinks
 
-Weblinks:
-https://learnxinyminutes.com/docs/yaml
+<https://learnxinyminutes.com/docs/yaml>

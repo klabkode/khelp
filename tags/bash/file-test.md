@@ -1,9 +1,20 @@
-# File test flags in bash
--s: Test whether a file exists and has a size greater than zero. If the file exists and is not empty, the condition returns true
--e: Tests whether a file exists. Example: if [ -e "$filename" ]; then ...
--f: Tests whether a file exists and is a regular file (not a directory or a device file). Example: if [ -f "$filename" ]; then ...
--d: Tests whether a file exists and is a directory. Example: if [ -d "$dirname" ]; then ...
--r: Tests whether a file exists and is readable. Example: if [ -r "$filename" ]; then ...
--w: Tests whether a file exists and is writable. Example: if [ -w "$filename" ]; then ...
--x: Tests whether a file exists and is executable. Example: if [ -x "$filename" ]; then ...
--L: Tests whether a file exists and is a symbolic link. Example: if [ -L "$filename" ]; then ...
+# File Test Flags in Bash
+
+| Flag | Description | Example |
+|------|-------------|---------|
+| `-s` | File exists and has a size greater than zero | `if [ -s "$filename" ]; then ...` |
+| `-e` | File exists | `if [ -e "$filename" ]; then ...` |
+| `-f` | File exists and is a regular file (not a directory or device) | `if [ -f "$filename" ]; then ...` |
+| `-d` | File exists and is a directory | `if [ -d "$dirname" ]; then ...` |
+| `-r` | File exists and is readable | `if [ -r "$filename" ]; then ...` |
+| `-w` | File exists and is writable | `if [ -w "$filename" ]; then ...` |
+| `-x` | File exists and is executable | `if [ -x "$filename" ]; then ...` |
+| `-L` | File exists and is a symbolic link | `if [ -L "$filename" ]; then ...` |
+
+**Example Usage:**
+
+```bash
+if [ -e "$filename" ]; then
+    echo "File exists"
+fi
+```

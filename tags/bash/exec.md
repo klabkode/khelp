@@ -1,6 +1,8 @@
-# Bash exec command usage
+# Bash `exec` Command Usage
 
-## Bash exec wrapper for colors and verbosity
+## Bash Exec Wrapper for Colors and Verbosity
+
+```bash
 FMTNC='\e[0m'
 FMTBOLD='\e[1m'
 FMTGRN='\e[0;32m'
@@ -26,28 +28,34 @@ echo_error() {
 
 execv() {
     set -v
-
     eval $@
     EVAL=$?
-
     set +v
-
     return $EVAL
 }
 
 execit() {
     echo_info "$@"
-
     eval $@
     EVAL=$?
-
     return $EVAL
 }
+```
 
-## Usage:
+## Usage
+
+```bash
 execit "<shell-command>"
+```
 
-# Run shell command in new instance:
+## Run Shell Command in New Instance
+
+```bash
 sh -c <shell-command>
+```
 
+## Example: Custom Interactive Shell
+
+```bash
 sh --rcfile <(echo "source ~/.bashrc; PS1='\$(_git_prompt)$ '") -i
+```

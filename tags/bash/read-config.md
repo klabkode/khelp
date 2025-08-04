@@ -1,7 +1,10 @@
-# Bash script that reads a config file with '=' separated key-value pairs,
-# skips commented lines with '#', and skips empty keys and values.
-# Written by ChatGPT AI
+# Bash and C: Read Config File with '=' Separated Key-Value Pairs
 
+This example shows how to read a config file with `=` separated key-value pairs, skipping commented lines (`#`) and empty keys/values, in both Bash and C.
+
+## Bash Example
+
+```bash
 #!/bin/bash
 
 config_file=config_file.cfg
@@ -14,23 +17,23 @@ fi
 
 # Read config file and store it in an associative array
 declare -A config_array
-while IFS='=' read -r key value
-do
+while IFS='=' read -r key value; do
     # Skip commented lines and empty keys and values
     if [[ "$key" == "#"* ]] || [[ -z "$key" ]] || [[ -z "$value" ]]; then
         continue
     fi
-
     # Store key-value pair in array
     config_array[$key]=$value
-done < config_file.cfg
+done < "$config_file"
 
 # Accessing values in the array
 echo "key1 = ${config_array[key1]}"
 echo "key2 = ${config_array[key2]}"
+```
 
-### EOF ###
+## C Example
 
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -64,5 +67,4 @@ int main(int argc, char *argv[]) {
     fclose(fp);
     return 0;
 }
-
-### EOF ###
+```

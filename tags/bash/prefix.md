@@ -1,5 +1,13 @@
-## Set @PREFIX if not already set in Bash
-  PREFIX=${PREFIX:=/usr/local}
+# Set `PREFIX` Variable if Not Already Set
 
-## Set @PREFIX if not already set in Makefile
-  PREFIX ?= /usr/local
+## In Bash
+
+```bash
+PREFIX=${PREFIX:=/usr/local}
+```
+
+## In Makefile
+
+```makefile
+PREFIX ?= /usr/local
+```

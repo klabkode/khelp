@@ -1,18 +1,21 @@
-# MMV command usage
+# MMV Command Usage
 
-## mmv to rename files with extensions .ab and .abc to .zip like this:
-```
+## Rename Files with Extensions `.ab` and `.abc` to `.zip`
+
+```bash
 mmv "*.ab" "#1.zip"
 mmv "*.abc" "#1.zip"
 ```
 
-## Ensure no file overwrites happen, use the -n flag first to preview the changes:
-```
+## Preview Changes to Ensure No File Overwrites (`-n` flag)
+
+```bash
 mmv -n "*.ab" "#1.zip"
 mmv -n "*.abc" "#1.zip"
 ```
 
-## Rename all files with any extension to have a .zip extension:
-```
+## Rename All Files with Any Extension to `.zip`
+
+```bash
 mmv '*.*' '#1.zip'
 ```

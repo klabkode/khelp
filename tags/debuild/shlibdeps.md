@@ -1,8 +1,14 @@
-shlibdeps: Shared library dependencies
+# shlibdeps: Shared library dependencies
 
-List_deps:
-    objdump -p ./app.out | grep NEEDED
-    dpkg-shlibdeps -O ./app.out (it requires debian/control)
+### List deps
 
-Create_deps_file: Create debian/substvars deps file:
-    dpkg-shlibdeps -e ./app.out (it requires debian/control)
+```bash
+objdump -p ./app.out | grep NEEDED
+dpkg-shlibdeps -O ./app.out (it requires debian/control)
+```
+
+### Create_deps_file: Create debian/substvars deps file
+
+```bash
+dpkg-shlibdeps -e ./app.out (it requires debian/control)
+```

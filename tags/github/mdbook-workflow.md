@@ -1,5 +1,8 @@
 # Deploy MDbook to Github Pages
 
+```yaml
+# Deploy MDbook to Github Pages
+
 name: Deploy MDBook
 
 on:
@@ -68,3 +71,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+```

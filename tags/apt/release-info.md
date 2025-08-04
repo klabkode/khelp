@@ -1,3 +1,7 @@
-release-info: Fix release info change
+# Fix Release Info Change Error
 
-Fix: sudo apt update --allow-releaseinfo-change
+If you encounter a release info change error, use:
+
+```sh
+sudo apt update --allow-releaseinfo-change
+```

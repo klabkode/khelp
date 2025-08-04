@@ -1,43 +1,81 @@
-# Setup Chroot environment in debian systems
+# Setup Chroot Environment
 
-# Install dependencies
-    sudo apt-get install debootstrap
+## Chroot Setup in Debian Systems
 
-# Create directory were to install chroot
-    mkdir ./chroot
+### Install dependencies
 
-# Create chroot environment
-    sudo debootstrap focal ./chroot/
+```bash
+sudo apt-get install debootstrap
+```
 
-# Mount required filesystems based on the requirements
-    sudo mount --bind /sys  ./chroot/sys/
-    sudo mount --bind /dev  ./chroot/dev/
-    sudo mount --bind /proc ./chroot/proc/
+### Create directory were to install chroot
 
-    Unmount this files after usage
+```bash
+mkdir ./chroot
+```
 
-# Run Chroot
-    sudo chroot ./chroot/
-    sudo chroot ./chroot/ <program>
+### Create chroot environment
 
-    Example:
-    sudo chroot ./chroot/ bash
+```bash
+sudo debootstrap focal ./chroot/
+```
 
-# Other stuffs:
-# Copy host file to access internet
-    cat /etc/os-release
-    cp /etc/hosts ~/chroot/ubuntu/bionic/etc/
+### Mount required filesystems based on the requirements
 
-# Add below prompt in .bashrc
-    CHROOT_NAME=trusty-chroot
-    export PS1="\e[0;32m\u@$CHROOT_NAME:\[\e[1;34m\]\w\[\e[00m\]$ "
-    cd $HOME
+```bash
+sudo mount --bind /sys  ./chroot/sys/
+sudo mount --bind /dev  ./chroot/dev/
+sudo mount --bind /proc ./chroot/proc/
+```
 
-# Add new user:
-    adduser chroot --home /home/chroot/ --shell /bin/bash
+> Unmount this files after usage
 
-# Give root access
-    sudo usermod -aG sudo $USER
-    [or]
-    Added below line in suders file by 'sudo visudo' (to run command as sudo)
-    chroot ALL=(ALL) NOPASSWD: ALL
+### Run Chroot
+
+```bash
+sudo chroot ./chroot/
+sudo chroot ./chroot/ <program>
+```
+
+Example:
+
+```bash
+sudo chroot ./chroot/ bash
+```
+
+## Other stuffs
+
+### Copy host file to access internet
+
+```bash
+cat /etc/os-release
+cp /etc/hosts ~/chroot/ubuntu/bionic/etc/
+```
+
+### Add below prompt in `.bashrc`
+
+```bash
+CHROOT_NAME=trusty-chroot
+export PS1="\e[0;32m\u@$CHROOT_NAME:\[\e[1;34m\]\w\[\e[00m\]$ "
+cd $HOME
+```
+
+### Add new user
+
+```bash
+adduser chroot --home /home/chroot/ --shell /bin/bash
+```
+
+### Give root access
+
+```bash
+sudo usermod -aG sudo $USER
+```
+
+Else,
+
+Added below line in suders file by 'sudo visudo' (to run command as sudo)
+
+```bash
+chroot ALL=(ALL) NOPASSWD: ALL
+```

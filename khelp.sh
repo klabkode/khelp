@@ -6,7 +6,7 @@ PKGNAME=Khelp
 PKGVERSION=2.0
 
 VERBOSE=0
-DIRKHELP=$HOME/khelp
+DIRKHELP=$HOME/.khelp
 DIRKHTAGS=$DIRKHELP/tags
 
 source $DIRKHELP/scripts/kstat.sh

@@ -1,10 +1,19 @@
-# Download Python Package:
+# Download Python Package
 
-## Download Python Package Binary:
-  `pip download <package-name>`
+## Download Python Package Binary
 
-## Download Python Package without dependencies:
-  `pip download --no-deps <package-name>`
+```bash
+pip download <package-name>
+```
 
-## Download Python Package Source:
-  `pip download --no-binary=:all: <package-name>`
+## Download Python Package without dependencies
+
+```bash
+pip download --no-deps <package-name>
+```
+
+## Download Python Package Source
+
+```bash
+pip download --no-binary=:all: <package-name>
+```

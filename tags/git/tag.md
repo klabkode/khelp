@@ -1,12 +1,21 @@
-Git Tag command line usage:
+# Git Tag Usage
 
-Create Tags:
-    git tag <tag-name>
+## Create Tags
 
-Push Tags:
-    git push --tags
-    git push origin :<tag-name>
+```bash
+git tag <tag-name>
+```
 
-Delete Tags:
-    git tag --delete <tag-name>          # Delete local tags
-    git push --delete origin <tag-name>  # Delete remote tags
+## Push Tags
+
+```bash
+git push --tags
+git push origin :<tag-name>
+```
+
+## Delete Tags
+
+```bash
+git tag --delete <tag-name>          # Delete local tags
+git push --delete origin <tag-name>  # Delete remote tags
+```

@@ -1,5 +1,6 @@
-Linux Error Codes:
+# Linux Error Codes
 
+```bash
  No  ErrorCode       Description
 ==== ==========      ===========
  1   EPERM           Operation not permitted
@@ -136,9 +137,11 @@ Linux Error Codes:
  131 ENOTRECOVERABLE State not recoverable
  132 ERFKILL         Operation not possible due to RF-kill
  133 EHWPOISON       Memory page has hardware error
+```
 
 Built by the below script:
 
+```bash
 #!/bin/bash
 
 # Run 'errno -l' command and save output to variable
@@ -157,3 +160,4 @@ while read -r line; do
   # Print formatted table row
   printf " %-3s %-15s %s\n" "$errno" "$code" "$desc"
 done <<< "$output"
+```

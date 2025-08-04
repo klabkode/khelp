@@ -1,52 +1,71 @@
-# If Else Usage in Bash
+# If-Else Usage in Bash
 
-## Setting flags:
-```  flag_a=true
-  flag_b=false
-```
-(or)
-```  flag_a=1
-  flag_b=0
-```
-## Using `-a` and `-o`:
-```  if [ "$flag_a" = true -a "$flag_b" = true ]; then
-      # Statements if both flag_a and flag_b are true
-  elif [ "$flag_a" = true -o "$flag_b" = true ]; then
-      # Statements if either flag_a or flag_b is true
-  else
-      # Statements if neither flag_a nor flag_b is true
-  fi
-```
-## Using `&&` and `||`:
-```  if [ "$flag_a" = true ] && [ "$flag_b" = true ]; then
-      # Statements if both flag_a and flag_b are true
-  elif [ "$flag_a" = true ] || [ "$flag_b" = true ]; then
-      # Statements if either flag_a or flag_b is true
-  else
-      # Statements if neither flag_a nor flag_b is true
-  fi
+## Setting Flags
+
+```bash
+flag_a=true
+flag_b=false
 ```
 
-## Testing conditions in bash
--x : Option is used to enable debugging. When a script is run with the -x option, each command is printed to the standard error output (stderr) preceded by the value of the PS4 (prompt string 4) variable.
--n : Tests if a string is not empty. Example: if [ -n "$var" ]; then ...
--z : Tests if a string is empty. Example: if [ -z "$var" ]; then ...
--eq: Tests if two integers are equal. Example: if [ "$a" -eq "$b" ]; then ...
--ne: Tests if two integers are not equal. Example: if [ "$a" -ne "$b" ]; then ...
--lt: Tests if the first integer is less than the second. Example: if [ "$a" -lt "$b" ]; then ...
--le: Tests if the first integer is less than or equal to the second. Example: if [ "$a" -le "$b" ]; then ...
--gt: Tests if the first integer is greater than the second. Example: if [ "$a" -gt "$b" ]; then ...
--ge: Tests if the first integer is greater than or equal to the second. Example: if [ "$a" -ge "$b" ]; then ...
-< and >: These can also be used for string comparison. Example: if [ "$string1" \< "$string2" ]; then ... (Note: < and > need to be escaped or quoted to prevent confusion with redirection operators.)
-= and !=: These can be used for string comparison, but == and != are more commonly used. Example: if [ "$string1" = "$string2" ]; then ...
-Remember that the single brackets [ ] are used for conditional tests in Bash, and double brackets [[ ]] provide additional features and are often preferred for more complex conditional expressions.
+or
 
-## File test flags in bash
--s: Test whether a file exists and has a size greater than zero. If the file exists and is not empty, the condition returns true
--e: Tests whether a file exists. Example: if [ -e "$filename" ]; then ...
--f: Tests whether a file exists and is a regular file (not a directory or a device file). Example: if [ -f "$filename" ]; then ...
--d: Tests whether a file exists and is a directory. Example: if [ -d "$dirname" ]; then ...
--r: Tests whether a file exists and is readable. Example: if [ -r "$filename" ]; then ...
--w: Tests whether a file exists and is writable. Example: if [ -w "$filename" ]; then ...
--x: Tests whether a file exists and is executable. Example: if [ -x "$filename" ]; then ...
--L: Tests whether a file exists and is a symbolic link. Example: if [ -L "$filename" ]; then ...
+```bash
+flag_a=1
+flag_b=0
+```
+
+## Using `-a` and `-o`
+
+```bash
+if [ "$flag_a" = true -a "$flag_b" = true ]; then
+    # Statements if both flag_a and flag_b are true
+elif [ "$flag_a" = true -o "$flag_b" = true ]; then
+    # Statements if either flag_a or flag_b is true
+else
+    # Statements if neither flag_a nor flag_b is true
+fi
+```
+
+## Using `&&` and `||`
+
+```bash
+if [ "$flag_a" = true ] && [ "$flag_b" = true ]; then
+    # Statements if both flag_a and flag_b are true
+elif [ "$flag_a" = true ] || [ "$flag_b" = true ]; then
+    # Statements if either flag_a or flag_b is true
+else
+    # Statements if neither flag_a nor flag_b is true
+fi
+```
+
+## Testing Conditions in Bash
+
+| Flag/Operator | Description | Example |
+|---------------|-------------|---------|
+| `-x` | Enable debugging; prints each command to stderr with PS4 prompt | `bash -x script.sh` |
+| `-n` | String is not empty | `[ -n "$var" ]` |
+| `-z` | String is empty | `[ -z "$var" ]` |
+| `-eq` | Integers are equal | `[ "$a" -eq "$b" ]` |
+| `-ne` | Integers are not equal | `[ "$a" -ne "$b" ]` |
+| `-lt` | First integer is less than second | `[ "$a" -lt "$b" ]` |
+| `-le` | First integer is less than or equal to second | `[ "$a" -le "$b" ]` |
+| `-gt` | First integer is greater than second | `[ "$a" -gt "$b" ]` |
+| `-ge` | First integer is greater than or equal to second | `[ "$a" -ge "$b" ]` |
+| `<` / `>` | String comparison (must be escaped or quoted) | `[ "$s1" \< "$s2" ]` |
+| `=` / `!=` | String comparison | `[ "$s1" = "$s2" ]` |
+
+- Use single brackets `[ ]` for basic tests.
+- Use double brackets `[[ ]]` for advanced expressions.
+
+## File Test Flags in Bash
+
+| Flag | Description | Example |
+|------|-------------|---------|
+| `-s` | File exists and has size > 0 | `[ -s "$filename" ]` |
+| `-e` | File exists | `[ -e "$filename" ]` |
+| `-f` | File exists and is a regular file | `[ -f "$filename" ]` |
+| `-d` | File exists and is a directory | `[ -d "$dirname" ]` |
+| `-r` | File exists and is readable | `[ -r "$filename" ]` |
+| `-w` | File exists and is writable | `[ -w "$filename" ]` |
+| `-x` | File exists and is executable | `[ -x "$filename" ]` |
+| `-L` | File exists and is a symbolic link | `[ -L "$filename" ]` |

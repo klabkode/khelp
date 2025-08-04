@@ -1,7 +1,8 @@
-Khelp: Display information about predefined topics
+# Khelp: Display information about predefined topics
 
 1. Display info about `array` in `bash` tag
 
+    ```bash
     $ khelp bash array
     bash-array: Array in bash script
 
@@ -12,9 +13,11 @@ Khelp: Display information about predefined topics
         for VAR in ${ARR[@]}; do
             echo "Array element: '$VAR'"
         done
+    ```
 
 2. Display multiple help contents of `bash` tag
 
+    ```bash
     $ khelp bash array fun
     bash-array: Array in bash script
 
@@ -44,3 +47,4 @@ Khelp: Display information about predefined topics
             # Functionality
             #
         }
+    ```

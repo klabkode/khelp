@@ -1,7 +1,15 @@
-# Vim run time path:
-Open Vim and type `:echo &runtimepath` to see a list of directories where Vim looks for plugins.
+# Vim Runtime Path
+
+Open Vim and type:
+
+```vim
+:echo &runtimepath
 ```
-## ~/.vim
+
+This will show a list of directories where Vim looks for plugins.
+
+```bash
+# ~/.vim
     ├── colors
     ├── pack
     │   └── vendor
@@ -9,12 +17,16 @@ Open Vim and type `:echo &runtimepath` to see a list of directories where Vim lo
     │           ├── nerdtree
     │           └── tagbar
     └── timeline
+```
 
-## /etc/vim/
+```bash
+# /etc/vim/
     ├── vimrc
     └── vimrc.tiny
+```
 
-## /usr/share/vim/
+```bash
+# /usr/share/vim/
     ├── addons
     │   ├── ftdetect
     │   ├── ftplugin

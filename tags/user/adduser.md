@@ -1,43 +1,68 @@
-# Add new user
-    useradd <username>    # Create only the user enrty
-    useradd <username> -m # Create user and home directory
-    adduser <username> --home /home/<username> --shell /bin/bash
-    useradd <username> -m -d /home/<username> -s /bin/bash <username>
+# Add New User
 
-    Examples:
-    adduser username
-    adduser username --home /home/username --shell /bin/bash
+```bash
+useradd <username>    # Create only the user enrty
+useradd <username> -m # Create user and home directory
+adduser <username> --home /home/<username> --shell /bin/bash
+useradd <username> -m -d /home/<username> -s /bin/bash <username>
+```
 
-    useradd options (see: man useradd):
-        -r, --system Create a system account
-        -m, --create-home Create the user's home directory
-        -d, --home-dir HOME_DIR Home directory of the new account
-        -s, --shell SHELL Login shell of the new account
-        -g, --gid GROUP Name or ID of the primary group
-        -G, --groups GROUPS List of supplementary groups
-        -p, --password PASSWORD Encrypted password of the new account
-        -u, --uid UID Specify user ID
+**Examples:**
 
-# Add new group and new user
-    groupadd -g 1000 <username>
-    useradd -d /home/<username> -s /bin/bash -m <username> -u 1000 -g 1000
+```bash
+adduser username
+adduser username --home /home/username --shell /bin/bash
 
-    Examples:
-    groupadd -g 1000 username
-    useradd -d /home/username -s /bin/bash -m username -u 1000 -g 1000
+useradd options (see: man useradd):
+    -r, --system Create a system account
+    -m, --create-home Create the user's home directory
+    -d, --home-dir HOME_DIR Home directory of the new account
+    -s, --shell SHELL Login shell of the new account
+    -g, --gid GROUP Name or ID of the primary group
+    -G, --groups GROUPS List of supplementary groups
+    -p, --password PASSWORD Encrypted password of the new account
+    -u, --uid UID Specify user ID
+```
 
-# Adding the new user to the sudo group
-    groups <username>           # To list the groups of the user belongs to
-    usermod -aG sudo <username> # Add the new user to a sudo group
+## Delete a user
 
-    Examples:
-    usermod -aG sudo username
-    usermod -aG vboxusers username
+```bash
+deluser <username>               # Delete only the user
+deluser --remove-home <username> # Delete user entry and home directory
+```
 
-# Alternate way to add user in sudo group
-    If you are signed as root user type 'visudo' and add the below entry
-    <username> ALL=(ALL:ALL) ALL
+## Add new group and new user
 
-# Delete a user
-    deluser <username>               # Delete only the user
-    deluser --remove-home <username> # Delete user entry and home directory
+```bash
+groupadd -g 1000 <username>
+useradd -d /home/<username> -s /bin/bash -m <username> -u 1000 -g 1000
+```
+
+**Examples:**
+
+```bash
+groupadd -g 1000 username
+useradd -d /home/username -s /bin/bash -m username -u 1000 -g 1000
+```
+
+## Adding the new user to the sudo group
+
+```bash
+groups <username>           # To list the groups of the user belongs to
+usermod -aG sudo <username> # Add the new user to a sudo group
+```
+
+**Examples:**
+
+```bash
+usermod -aG sudo username
+usermod -aG vboxusers username
+```
+
+### Alternate way to add user in sudo group
+
+If you are signed as root user type `visudo` and add the below entry
+
+```bash
+<username> ALL=(ALL:ALL) ALL
+```

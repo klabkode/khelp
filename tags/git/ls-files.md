@@ -1,16 +1,33 @@
-# List files in the Git index:
+# Git List
 
-## List Tracked Files:
-  `git ls-files`
+## Git List files in the Git Index
 
-## List Files Matching a Pattern:
-  `git ls-files "*.txt"`
+### List Tracked Files
 
-## List Files in the Index:
-  `git ls-files --stage`
+```bash
+git ls-files
+```
 
-## List Modified Files:
-  `git ls-files --modified`
+### List Files Matching a Pattern
 
-## List Deleted Files:
-  `git ls-files --deleted`
+```bash
+git ls-files "*.txt"
+```
+
+### List Files in the Index
+
+```bash
+git ls-files --stage
+```
+
+### List Modified Files
+
+```bash
+git ls-files --modified
+```
+
+### List Deleted Files
+
+```bash
+git ls-files --deleted
+```

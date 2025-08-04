@@ -1,5 +1,6 @@
-# Print debug on the go:
-```
+# Print Debug On the Go
+
+```c
 #define KK_PRINT_DEBUG(...) do { \
     FILE *dbgfp = fopen("/var/log/kk_debug.log", "a+"); \
     if (dbgfp) { \

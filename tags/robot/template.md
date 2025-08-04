@@ -1,9 +1,8 @@
-# Sample Robot script:
-
+# Sample Robot script
 
 ## Database library usage
 
-```
+```bash
 *** Settings ***
 Library DatabaseLibrary
 

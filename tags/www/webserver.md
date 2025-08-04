@@ -10,19 +10,23 @@ It also includes CGI script support and setting custom port numbers.
 
 ## 1. Python Web Server
 
-#### Python 3.x (built-in)
+### Python 3.x (built-in)
 
 ```bash
 # Serve current directory on port 8000
-python3 -m http.server 8000
+
+python  -m SimpleHTTPServer 8000 # Python 2.X
+python3 -m http.server 8000      # Python 3.X
 ```
 
-#### Python CGI Server (with CGI support)
+### Python CGI Server (with CGI support)
 
 ```bash
 # Place CGI scripts in ./cgi-bin/
 # Use --cgi flag for CGI support
-python3 -m http.server 8000 --cgi
+
+python  -m CGIHTTPServer 8000     # Python 2.X
+python3 -m http.server --cgi 8000 # Python 3.X
 ```
 
 CGI scripts should be placed in a `cgi-bin/` directory and have executable permissions:
@@ -40,13 +44,14 @@ Refer to **khelp/www/cgi-bin.md** for CGI script details.
 php -S localhost:8000
 ```
 
-#### To enable PHP CGI scripts:
+### To enable PHP CGI scripts
 
 Make sure your `.php` files are valid scripts and index.php exists.
 
 PHP doesn’t require a separate `cgi-bin`.
 
 Example:
+
 ```php
 <?php
 echo "Hello from PHP!";
@@ -54,25 +59,33 @@ echo "Hello from PHP!";
 ```
 
 Default routing:
+
 ```bash
 php -S localhost:8000 router.php
 ```
 
+### Host Control
+
+```bash
+php -S 0.0.0.0:8080   # Allows external host connections
+php -S localhost:8080 # Localhost does'nt allows external host connections
+```
+
 ## 3. Node.js Simple HTTP Server
 
-### Install `http-server` globally (if not installed):
+### Install `http-server` globally (if not installed)
 
 ```bash
 npm install -g http-server
 ```
 
-### Run the server:
+### Run the server
 
 ```bash
 http-server . -p 8000
 ```
 
-#### Or use a custom Node.js script with CGI-like logic:
+#### Or use a custom Node.js script with CGI-like logic
 
 ```javascript
 // cgi-server.js
@@ -102,14 +115,16 @@ Place scripts under `/cgi-bin/`, ensure execution rights.
 
 Apache provides robust static & dynamic content delivery and CGI support.
 
-### Installation:
+### Installation
 
 **Debian/Ubuntu:**
+
 ```bash
 sudo apt install apache2
 ```
 
 **RedHat/CentOS:**
+
 ```bash
 sudo yum install httpd
 ```
@@ -118,7 +133,7 @@ sudo yum install httpd
 
 Edit `/etc/apache2/ports.conf`:
 
-```
+```bash
 Listen 8080
 ```
 
@@ -140,6 +155,7 @@ sudo systemctl restart apache2
 ### Enable CGI Support
 
 **Enable CGI Module:**
+
 ```bash
 sudo a2enmod cgi
 ```
@@ -162,10 +178,9 @@ sudo chmod +x /usr/lib/cgi-bin/test.py
 ```
 
 Python CGI example:
+
 ```python
 #!/usr/bin/env python3
 print("Content-Type: text/html\n")
 print("<h1>Hello from CGI Python!</h1>")
 ```
-
----

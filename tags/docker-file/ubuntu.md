@@ -1,5 +1,6 @@
-Docker file to pull and configure Ubuntu base image:
+# Docker file to pull and configure Ubuntu base image
 
+```Dockerfile
 # Base image
 FROM ubuntu:focal
 
@@ -37,3 +38,4 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get install -y --no-install-recommends cscope curl gcc gdb git global gpg make sudo tree universal-ctags vim wget
 
 WORKDIR /root
+```

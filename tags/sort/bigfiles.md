@@ -1,5 +1,6 @@
-# Find big files:
-```
+# Find big files
+
+```bash
 # Find the top 20 largest files in the current directory and its subdirectories
 find . -type f -exec du -h {} + | sort -rh | head -n 20 > top_files.txt
 

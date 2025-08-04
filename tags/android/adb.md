@@ -36,18 +36,22 @@ adb shell monkey -p <package> -v 1           # Launch app via monkey tool
 ```
 
 ### Install APK from PC
+
 ```bash
 adb install Device-ID-1.3.2.apk
 ```
 
 ### Install APK from Device Shell
+>
 > Requires file in `/data/local/tmp/`, not `/sdcard/`
+
 ```bash
 adb push Device-ID-1.3.2.apk /data/local/tmp/
 adb shell pm install /data/local/tmp/Device-ID-1.3.2.apk
 ```
 
 ### Reinstall or Update APK
+
 ```bash
 adb shell pm install -r /data/local/tmp/Device-ID-1.3.2.apk
 ```
@@ -61,6 +65,7 @@ adb shell pm clear com.whatsapp
 ```
 
 ### Cleanup
+
 ```bash
 adb shell rm /data/local/tmp/Device-ID-1.3.2.apk
 ```
@@ -151,16 +156,16 @@ adb shell ls /storage/emulated/0/           # Access internal SD card
 adb shell df -h                             # Show disk usage
 ```
 
-### 📋 Examples:
+### 📋 Examples
 
 - To find a package name:
+
   ```bash
   adb shell pm list packages | grep keyword
   ```
 
 - To launch app from shell:
+
   ```bash
   adb shell monkey -p com.example.app -v 1
   ```
-
----

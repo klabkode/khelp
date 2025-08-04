@@ -1,5 +1,6 @@
-# Macros logger
-```
+# Macros Logger
+
+```c
 /* print debug with macros */
 #define print_debug(fmt, args...) (fprintf(stderr, fmt, ##args))
 
@@ -15,8 +16,11 @@
 
 /* ISO C standard variadic macro */
 #define print_debug(fmt, ...) (fprintf(stderr, "\rKKDEBUG: %d %s:%d %s(): " fmt "\n", getpid(), __FILE__, __LINE__, __func__, __VA_ARGS__))
+```
 
-## Macro to adjust arguments:
+## Macro to adjust arguments
+
+```c
 #define print_debug_wrapper(MOD, ...) print_debug(__VA_ARGS__)
 
 /* Example usage: */

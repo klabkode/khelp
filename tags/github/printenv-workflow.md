@@ -1,5 +1,6 @@
-GitHub actions environment variables:
+# GitHub Actions Environment Variables
 
+```bash
 CI
 GITHUB_ACTION
 GITHUB_ACTION_PATH
@@ -41,15 +42,20 @@ RUNNER_NAME
 RUNNER_OS
 RUNNER_TEMP
 RUNNER_TOOL_CACHE
+```
 
 GitHub Actions variables list script to print out all GitHub Actions environment variables:
 
 1. Create a simple YAML file that runs on a push to main or master
-2. Add the job to run the command mentioned in 'run' field on Ubuntu image
+2. Add the job to run the command mentioned in `run` field on Ubuntu image
 3. Run the build
 4. View the GitHub Action environment variable list in the job status window
 
-[.github/workflows/printenv.yaml]
+## Example GitHub Actions Workflow
+
+**.github/workflows/printenv.yaml:**
+
+```yaml
 name: GitHub Actions Environment
 on:
   push:
@@ -60,3 +66,4 @@ jobs:
     steps:
       - name: Print environment varaibles
         run: env
+```

@@ -1,6 +1,6 @@
-# TCP dump options:
+# TCP Dump Options
 
-
+```bash
 Option Description
 -i -- Listen on the specified interface.
 -n -- Don’t resolve hostnames. You can use -nn to don’t resolve hostnames or port names.
@@ -21,3 +21,4 @@ Option Description
 -r: Read from a file instead of from the network
 -w: Write the captured packets to a file
 -s: Capture the specified number of bytes from each packet
+```

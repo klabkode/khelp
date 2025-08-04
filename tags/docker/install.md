@@ -1,34 +1,55 @@
 # Install Docker Engine on Ubuntu
 
-## 1. Add Docker's official GPG key:
-   sudo apt-get update
-   sudo apt-get install ca-certificates curl gnupg
-   sudo install -m 0755 -d /etc/apt/keyrings
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-   sudo chmod a+r /etc/apt/keyrings/docker.gpg
+## 1. Add Docker's official GPG key
 
-# 2. Add the repository to Apt sources:
-   echo \
-       "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-       $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-   sudo apt-get update
+```bash
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
 
-## 2. Install the Docker packages:
-   sudo apt-get install docker-ce docker-ce-cli containerd.io \
-                        docker-buildx-plugin docker-compose-plugin
+## 2. Add the repository to Apt
 
-## 3. Verify that the Docker Engine installation:
-   docker --version
-   docker buildx verion
+```bash
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
 
-## 4. Hello world!
-   sudo docker run hello-world
+## 3. Install the Docker packages
 
-## 5. Docker Engine service:
-   sudo service docker start/status
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io \
+                     docker-buildx-plugin docker-compose-plugin
+```
 
-## 6. Uninstall Docker Engine:
-   sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-   sudo rm -rf /var/lib/docker
-   sudo rm -rf /var/lib/containerd
+## 4. Verify that the Docker Engine installation
+
+```bash
+docker --version
+docker buildx verion
+```
+
+## 5. Hello world
+
+```bash
+sudo docker run hello-world
+```
+
+## 6. Docker Engine service
+
+```bash
+sudo service docker start/status
+```
+
+## 7. Uninstall Docker Engine
+
+```bash
+sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+```

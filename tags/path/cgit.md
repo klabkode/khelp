@@ -1,10 +1,13 @@
-# CGit Resources:
+# CGit Resources
 
-## /etc/cgitrc
+```bash
+# /etc/cgitrc
 -rw-r--r-- 1 root root 2.6K Dec  6 14:08 /etc/cgitrc
+```
 
-## /usr/share/cgit/
-```├── cgit.css
+```bash
+# /usr/share/cgit/
+├── cgit.css
 ├── cgit.png
 ├── favicon.ico
 ├── robots.txt
@@ -12,13 +15,17 @@
 
 0 directories, 5 files
 ```
-## /usr/lib/cgi-bin/
-```├── gitweb.cgi -> ../../share/gitweb/gitweb.cgi
+
+```bash
+# /usr/lib/cgi-bin/
+├── gitweb.cgi -> ../../share/gitweb/gitweb.cgi
 ├── hello.cgi
 └── xplore.cgi
 ```
-## /usr/lib/cgit/
-```├── cgit.cgi
+
+```bash
+# /usr/lib/cgit/
+├── cgit.cgi
 └── filters
     ├── about-formatting.sh
     ├── commit-links.sh
