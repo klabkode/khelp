@@ -105,3 +105,36 @@ Khelp: listing 2 topics in 'bash' tag ...
   -- array
   -- fun
 ```
+
+## Build HTML site
+
+Simply run `make` in the root folder.
+
+```bash
+$ make
+
+Building Khelp HTML site...
+
+  Added tag1/file1 ...
+  Added tag1/file2 ...
+  Added tag1/file3 ...
+  Added tag2/file1 ...
+  Added tag2/file2 ...
+  Added tag2/file3 ...
+  Added tag3/file1 ...
+  Added tag3/file2 ...
+  Added tag3/file3 ...
+
+Generated index.html
+```
+
+## Explore Website Locally
+
+Start a local server:
+
+```bash
+python3 -m http.server 1111
+```
+
+Then open http://localhost:1111 in your browser.
+

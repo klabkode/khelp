@@ -17,4 +17,11 @@ uninstall:
 	@echo "Removing Khelp ..."
 	rm -vf $(INSTALL_PATH)
 
-.PHONY: install uninstall
+html:
+	@# Build Static HTML Site
+	python scripts/build_html.py
+
+clean:
+	rm -f index.html
+
+.PHONY: html clean install uninstall
