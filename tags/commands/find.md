@@ -1,9 +1,34 @@
 # Find Command Usage
 
+## List Files
+
+```bash
+find
+# or
+find .
+```
+
+## List Files with Realpath
+
+```bash
+find "$PWD"
+# or
+find "$(realpath .)"
+```
+
+## Find Files by Type
+
+```bash
+find -type f        # Find regular files
+find -type d        # Find directories
+find -executable    # Find executables and directories
+```
+
+
 ## Find files and sort it
 
 ```bash
-find . -name *.h -exec dirname {} \; | sort > sorted.txt
+find . -name "*.h" -exec dirname {} \; | sort > sorted.txt
 ```
 
 ## Find files and run 'bashcov' command for each file
