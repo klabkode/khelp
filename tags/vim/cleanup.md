@@ -102,3 +102,27 @@ set smartindent
 set fileformat=unix
 ```
 
+## Recursively trim trailing whitespace from all files in current directory
+
+```bash
+find . -type f -exec vim -c ':%s/\s\+$//g' -c 'wq' {} \;
+```
+
+### Optional Filters
+
+```bash
+find . -type f \( -name "*.c" -o -name "*.h" -o -name "*.sh" \) -exec vim -c ':%s/\s\+$//g' -c 'wq' {} \;
+```
+
+## Highlight trailing whitespace and consecutive empty lines
+
+```vim
+" Highlight groups
+highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraEmptyLines ctermbg=darkred guibg=darkred
+
+" Initial highlight on file read or creation
+autocmd BufReadPost,BufNewFile * call matchadd('ExtraWhitespace', '\s\+$')
+autocmd BufReadPost,BufNewFile * call matchadd('ExtraEmptyLines', '^\(\s*$\n\)\{2,}')
+```
+
