@@ -8,6 +8,19 @@ SRC := khelp.sh
 
 INSTALL_PATH := $(BINDIR)/$(TARGET)
 
+all:
+	@echo "Khelp : Nothing to be done for 'all'."
+	@echo "Usage : make help|install|uninstall|html|clean"
+
+help:
+	@echo 'Khelp Makefile Options.';
+	@echo 'Options:'
+	@echo '  install   - Install Khelp CLI script'
+	@echo '  uninstall - Uninstall Khelp CLI script'
+	@echo '  html      - Generate Khelp Static HTML site'
+	@echo '  clean     - Clean HTML site'
+	@echo '  help      - Show this help menu'
+
 install:
 	@echo "Installing Khelp ..."
 	mkdir -p $(BINDIR)

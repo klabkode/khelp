@@ -37,10 +37,11 @@
 
         .sidebar {
             width: 20%;
-            min-width: 200px;
+            padding: 10px;
+            min-width: 300px;
             max-width: 600px;
-            background-color: var(--main-bg-color);
             overflow-y: auto;
+            background-color: var(--main-bg-color);
             border-right: 1px solid #2c2c2c;
         }
 
@@ -61,7 +62,7 @@
             }
 
             .sidebar {
-                width: 100%;
+                width: 95%;
                 height: auto;
                 border-right: none;
                 border-bottom: 1px solid #2c2c2c;

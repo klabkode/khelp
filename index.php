@@ -27,11 +27,54 @@
             background-color: var(--main-bg-color);
         }
 
-        .container {
+        .layout {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 20%;
+            padding: 10px;
+            min-width: 300px;
+            max-width: 600px;
+            overflow-y: auto;
+            background-color: var(--main-bg-color);
+            border-right: 1px solid #2c2c2c;
+        }
+
+        .main-view {
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        .main-view iframe {
             width: 100%;
-            padding: 20px;
-            max-width: 768px;
-            box-sizing: border-box;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 95%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #2c2c2c;
+            }
+
+            .main-view {
+                height: auto;
+            }
+
+            .main-view iframe {
+                display: none;
+            }
         }
 
         .banner {
@@ -164,67 +207,90 @@
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
         }
+
+        /* For thin scroll bars */
+        /* Chrome, Edge, Safari */
+        ::-webkit-scrollbar {
+            width: 3px;
+            height: 3px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #555 transparent;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="banner">
-            <h1 style="font-family: 'Anta';font-size: 35px; font-weight: normal;">Khelp</h1>
-
-            <div class="search">
-                <input type="text" id="search-box" placeholder="Search khelp ..."  onkeyup="searchFiles()">
+    <div class="layout">
+        <div class="sidebar">
+            <div class="banner">
+                <h1 style="font-family: 'Anta';font-size: 35px; font-weight: normal;">Khelp</h1>
+                <div class="search">
+                    <input type="text" id="search-box" placeholder="Search khelp ..." onkeyup="searchFiles()">
+                </div>
             </div>
-        </div>
+            <div id="card-container">
+                <?php
+                function listDirectory($dir, $isRoot = false) {
+                    $items = scandir($dir);
+                    $items = array_diff($items, ['.', '..']);  // Exclude . and ..
 
-        <div id="card-container">
+                    foreach ($items as $item) {
+                        $fullPath = "$dir/$item";
 
-        <?php
-        function listDirectory($dir, $isRoot = false) {
-            $items = scandir($dir);
-            $items = array_diff($items, ['.', '..']);  // Exclude . and ..
+                        if (is_dir($fullPath)) {
+                            echo "<ul class='folder-container'>";
+                            echo "  <div class='file-item folder' onclick='toggleFolder(this)'>";
+                            createTagEntry($fullPath, true);
+                            echo "  </div>";
+                            echo "  <div class='file-list collapsed'>";
+                            listDirectory($fullPath);
+                            echo "  </div>";
+                            echo "</ul>";
+                        } else if (!$isRoot) {
+                            echo "<div class='file-item file' onclick='openFile(\"$fullPath\")'>";
+                            createTagEntry($fullPath, false);
+                            echo "</div>";
+                        }
+                    }
+                }
 
-            foreach ($items as $item) {
-                $fullPath = "$dir/$item";
+                function createTagEntry($entryPath, $isFolder) {
+                    $entryName = basename($entryPath);
+                    $entryIcon = $isFolder ? 'html/book.png' : 'html/page.png';
 
-                if (is_dir($fullPath)) {
-                    echo "<ul class='folder-container'>";
-                    echo "  <div class='file-item folder' onclick='toggleFolder(this)'>";
-                    createTagEntry($fullPath, true);
-                    echo "  </div>";
-                    echo "  <div class='file-list collapsed'>";
-                    listDirectory($fullPath);
-                    echo "  </div>";
-                    echo "</ul>";
-                } else if (!$isRoot) {
-                    echo "<div class='file-item file' onclick='openFile(\"$fullPath\")'>";
-                    createTagEntry($fullPath, false);
+                    echo "<img src='$entryIcon' class='file-icon'>";
+                    echo "<div class='file-details'>";
+                    echo "<div class='file-name'>$entryName</div>";
                     echo "</div>";
                 }
-            }
-        }
 
-        function createTagEntry($entryPath, $isFolder) {
-            $entryName = basename($entryPath);
-            $entryIcon = $isFolder ? 'html/book.png' : 'html/page.png';
+                $dirTags = 'tags';
 
-            echo "<img src='$entryIcon' class='file-icon'>";
-            echo "<div class='file-details'>";
-            echo "<div class='file-name'>$entryName</div>";
-            echo "</div>";
-        }
-
-        $dirTags = 'tags';
-
-        if (is_dir($dirTags)) {
-            listDirectory($dirTags, true);
-        } else {
-            echo "<p style='color: orange'>Oops! no tags are there.</p>";
-        }
-        ?>
+                if (is_dir($dirTags)) {
+                    listDirectory($dirTags, true);
+                } else {
+                    echo "<p style='color: orange'>Oops! no tags are there.</p>";
+                }
+                ?>
+            </div>
+        </div>
+        <div class="main-view">
+            <iframe id="file-viewer" name="file-viewer" src="html/tagview.html" frameborder="0"></iframe>
         </div>
     </div>
-
     <script>
         function toggleFolder(folderItem) {
             const allFolders = document.querySelectorAll('.folder.open');
@@ -249,33 +315,74 @@
         }
 
         function openFile(filePath) {
-            const viewPortURL = 'html/tagview.html?file=' + encodeURIComponent(filePath);
-            window.open(viewPortURL, '_blank');
+            // On mobile, open in new tab
+            if (window.innerWidth <= 768) {
+                window.open("html/tagview.html?file=" + encodeURIComponent(filePath), "_blank");
+            } else {
+                // On desktop, load into iframe
+                document.getElementById("file-viewer").src = "html/tagview.html?file=" + encodeURIComponent(filePath);
+            }
         }
 
-        /* FIXME: Folders are not expanding */
         function searchFiles() {
-            const input = document.getElementById('search-box').value.toLowerCase();
-            const files = document.querySelectorAll('.file-item');
-            const folders = new Set();
+            const input = document.getElementById('search-box').value.toLowerCase().trim();
+            const allFolders = document.querySelectorAll('.folder-container');
 
-            files.forEach(file => {
-                const text = file.innerText.toLowerCase();
-                if (text.includes(input)) {
-                    file.style.display = '';
-                    const folder = file.closest('.folder');
-                    if (folder) {
-                        folders.add(folder);
+            if (input === "") {
+                allFolders.forEach(folderContainer => {
+                    const folder = folderContainer.querySelector('.file-item.folder');
+                    const fileList = folderContainer.querySelector('.file-list');
+                    const fileItems = folderContainer.querySelectorAll('.file-item.file');
+
+                    folderContainer.style.display = '';
+                    folder.classList.remove('open');
+                    folderContainer.classList.remove('open');
+                    fileList.classList.add('collapsed');
+
+                    // show all files
+                    fileItems.forEach(file => file.style.display = '');
+                });
+                return;
+            }
+
+            allFolders.forEach(folderContainer => {
+                const folder = folderContainer.querySelector('.file-item.folder');
+                const tagName = folder.querySelector('.file-name').textContent.toLowerCase();
+                const fileList = folderContainer.querySelector('.file-list');
+                const fileItems = folderContainer.querySelectorAll('.file-item.file');
+
+                let folderMatch = tagName.includes(input);
+                let hasMatchingFile = false;
+
+                // Track which files matched
+                fileItems.forEach(file => {
+                    const fileName = file.querySelector('.file-name').textContent.toLowerCase();
+                    if (fileName.includes(input)) {
+                        file.style.display = '';
+                        hasMatchingFile = true;
+                    } else {
+                        file.style.display = folderMatch ? '' : 'none';
+                    }
+                });
+
+                if (folderMatch || hasMatchingFile) {
+                    folderContainer.style.display = '';
+
+                    // reset folder state
+                    folder.classList.remove('open');
+                    folderContainer.classList.remove('open');
+                    fileList.classList.add('collapsed');
+
+                    if (hasMatchingFile) {
+                        folder.classList.add('open');
+                        folderContainer.classList.add('open');
+                        fileList.classList.remove('collapsed');
                     }
                 } else {
-                    file.style.display = 'none';
-                }
-            });
-
-            folders.forEach(folder => {
-                const folderItem = folder.querySelector('.file-item.folder');
-                if (folderItem) {
-                    toggleFolder(folderItem);
+                    folderContainer.style.display = 'none';
+                    folder.classList.remove('open');
+                    folderContainer.classList.remove('open');
+                    fileList.classList.add('collapsed');
                 }
             });
         }
