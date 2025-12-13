@@ -322,6 +322,7 @@
 - [NoVNC](vnc/novnc.md)
 - [Resolution](vnc/resolution.md)
 - [Xstartup](vnc/xstartup.md)
+- [Xrandr](vnc/xrandr.md)
 
 # WM
 
