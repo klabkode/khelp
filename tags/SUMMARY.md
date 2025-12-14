@@ -289,6 +289,7 @@
 
 # User
 
+- [Readme](user/readme.md)
 - [Adduser](user/adduser.md)
 - [Print Username](user/print-username.md)
 - [Sudoer](user/sudoer.md)
