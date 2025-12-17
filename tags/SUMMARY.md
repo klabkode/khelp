@@ -324,10 +324,13 @@
 - [Resolution](vnc/resolution.md)
 - [Xstartup](vnc/xstartup.md)
 - [Xrandr](vnc/xrandr.md)
+- [Metacity](vnc/metacity.md)
 
 # WM
 
 - [Bare WM](wm/bare-wm.md)
+- [Lite WMs](wm/litewm.md)
+- [GDM3](wm/gdm3.md)
 
 # WWW
 
