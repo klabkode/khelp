@@ -29,4 +29,3 @@ gnome-shell + mutter
 ```
 
 ---
-

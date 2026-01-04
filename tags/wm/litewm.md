@@ -8,4 +8,3 @@
 | Built-in panel       | **IceWM**      |
 | Keyboard power user  | **i3**         |
 | Embedded / kiosk     | **Matchbox**   |
-
