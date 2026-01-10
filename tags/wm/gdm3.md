@@ -12,7 +12,7 @@ Managing Wayland vs X11
 
 Handling user switching, locking, and session selection
 
-In short:
+## In short
 
 gdm3 is the program that starts GNOME itself.
 
@@ -26,6 +26,18 @@ gdm3  ← (login screen)
 gnome-session
   ↓
 gnome-shell + mutter
+```
+
+---
+
+```bash
+gdm3 = doorman (login screen)
+
+gnome-session = house manager
+
+mutter = window traffic controller
+
+gnome-shell = furniture + UI
 ```
 
 ---
