@@ -173,6 +173,7 @@
 - [Configs](git/configs.md)
 - [Conflicts](git/conflicts.md)
 - [Diff](git/diff.md)
+- [Line Feed](git/line-feed.md)
 - [Log](git/log.md)
 - [Ls Files](git/ls-files.md)
 - [Merge](git/merge.md)
