@@ -1,5 +1,31 @@
 # Python package manager
 
+## Highlights
+
+### Ubuntu
+
+```bash
+cd ~/Projects/Package
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+If you want the venv activated automatically in this project, you can add a `.envrc` (if using `direnv`) or just remember to source `.venv/bin/activate` each session.
+
+### Windows
+
+```bash
+cd C:\Users\UserName\Projects\Package
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+To deactivate later: `deactivate`
+
+## What is PIP
+
 `pip` is the reference Python package manager. It’s used to install and update packages into a virtual environment.
 
 The Python installers for Windows and MacOS include pip.
@@ -161,6 +187,15 @@ To setup for bash:
 ```bash
 python -m pip completion --bash >> ~/.profile
 ```
+
+## Bypasses Debian's protection
+
+```bash
+pip install -r requirements.txt --break-system-packages
+```
+
+This bypasses Debian's protection that prevents pip from conflicting with system-managed packages.
+It's generally safe for a single-package project like this (jinja2), but the virtual environment approach is safer for production use.
 
 ## Weblinks
 
